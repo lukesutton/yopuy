@@ -2,30 +2,26 @@ import Foundation
 
 typealias JSONDictionary = [String: AnyObject]
 
-enum Response<E> {
-    case parseError(ErrorType)
-    case serverError(ErrorType)
-    case success(E)
-}
-
 protocol Resource {
     associatedtype Result
-
+    associatedtype Flag
     var path: String { get }
-    var parse: (NSData) -> Result? { get }
 }
 
-struct RootResource<Entity>: Resource {
+struct ListFlag {}
+struct SingleFlag {}
+
+struct RootResource<Entity, F>: Resource {
     typealias Result = Entity
+    typealias Flag = F
     let path: String
-    let parse: (NSData) -> Entity?
 }
 
-struct ChildResource<Entity, Parent: Resource>: Resource {
+struct ChildResource<Entity, F, Parent: Resource>: Resource {
     typealias Result = Entity
+    typealias Flag = F
     let path: String
     let parent: Parent
-    let parse: (NSData) -> Entity?
 }
 
 protocol Entity {
@@ -33,30 +29,31 @@ protocol Entity {
     init?(json: JSONDictionary)
 }
 
-func coerceJSONCollection(data: NSData) -> [JSONDictionary]? {
-    guard let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) else {return nil}
-    return json as? [JSONDictionary]
-}
+protocol ListableEntity: Entity {}
 
-func coerceJSONEntity(data: NSData) -> JSONDictionary? {
-    guard let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) else {return nil}
-    return json as? JSONDictionary
-}
+protocol SingletonEntity: Entity {}
+
+protocol CreatableEntity: Entity {}
+
+protocol ReadableEntity: Entity {}
+
+protocol UpdatableEntity: Entity {}
+
+protocol DestroyableEntity: Entity {}
+
+protocol FullEntity: ListableEntity, CreatableEntity, ReadableEntity, UpdatableEntity, DestroyableEntity {}
 
 protocol RootEntity: Entity {}
 
-extension RootEntity {
-    static func all() -> RootResource<[Self]> {
-        return RootResource(path: Self.path) { data in
-            return coerceJSONCollection(data)?.flatMap(Self.init)
-        }
+extension RootEntity where Self: ListableEntity {
+    static func list() -> RootResource<Self, ListFlag> {
+        return RootResource(path: Self.path)
     }
+}
 
-    static func withID(id: String) -> RootResource<Self> {
-        return RootResource(path: "\(Self.path)/\(id)") { data in
-            guard let json = coerceJSONEntity(data) else {return nil}
-            return Self.init(json: json)
-        }
+extension RootEntity where Self: ReadableEntity {
+    static func withID(id: String) -> RootResource<Self, SingleFlag> {
+        return RootResource(path: "\(Self.path)/\(id)")
     }
 }
 
@@ -64,38 +61,31 @@ protocol ChildEntity: Entity {
     associatedtype ParentEntity
 }
 
-extension ChildEntity {
-    static func all<R where R: Resource, R.Result == ParentEntity>(parent: R) -> ChildResource<[Self], R> {
-        return ChildResource(path: "\(parent.path)/\(Self.path)", parent: parent) { data in
-            return coerceJSONCollection(data)?.flatMap(Self.init)
-        }
+extension ChildEntity where Self: ListableEntity {
+    static func list<R where R: Resource, R.Result == ParentEntity>(parent: R) -> ChildResource<Self, ListFlag, R> {
+        return ChildResource(path: "\(parent.path)/\(Self.path)", parent: parent)
     }
 
-    static func all<R where R: Resource, R.Result == ParentEntity>() -> (R) -> ChildResource<[Self], R> {
+    static func list<R where R: Resource, R.Result == ParentEntity>() -> (R) -> ChildResource<Self, ListFlag, R> {
         return { parent in
-            return Self.all(parent)
+            return Self.list(parent)
         }
     }
+}
 
-    static func withID<R where R: Resource, R.Result == ParentEntity>(parent: R, id: String) -> ChildResource<Self, R> {
-        return ChildResource(path: "\(parent.path)/\(Self.path)/\(id)", parent: parent) { data in
-            guard let json = coerceJSONEntity(data) else {return nil}
-            return Self.init(json: json)
-        }
+extension ChildEntity where Self: ReadableEntity {
+    static func withID<R where R: Resource, R.Result == ParentEntity>(parent: R, id: String) -> ChildResource<Self, SingleFlag, R> {
+        return ChildResource(path: "\(parent.path)/\(Self.path)/\(id)", parent: parent)
     }
 
-    static func withID<R where R: Resource, R.Result == ParentEntity>(id: String) -> (R) -> ChildResource<Self, R> {
+    static func withID<R where R: Resource, R.Result == ParentEntity>(id: String) -> (R) -> ChildResource<Self, SingleFlag, R> {
         return { parent in
             return Self.withID(parent, id: id)
         }
     }
 }
 
-func / <P, C where P: Resource, C: ChildEntity, P.Result == C.ParentEntity>(resource: P, fn: (P) -> ChildResource<C, P>) -> ChildResource<C, P> {
-    return fn(resource)
-}
-
-func / <P, C where P: Resource, C: ChildEntity, P.Result == C.ParentEntity>(resource: P, fn: (P) -> ChildResource<[C], P>) -> ChildResource<[C], P> {
+func / <P, C, X where P: Resource, C: ChildEntity, P.Result == C.ParentEntity>(resource: P, fn: (P) -> ChildResource<C, X, P>) -> ChildResource<C, X, P> {
     return fn(resource)
 }
 
@@ -113,18 +103,31 @@ final class WebService {
         self.session = NSURLSession(configuration: configuration)
     }
 
-    func load<R: Resource>(resource: R, completion: (R.Result?) -> Void) {
+    func list<R where R: Resource, R.Result: protocol<ListableEntity, Entity>, R.Flag == ListFlag>(resource: R, completion: ([R.Result]?) -> Void) {
         let url = root.URLByAppendingPathComponent(resource.path)
         let task = session.dataTaskWithURL(url) { data, _, _ in
             if let data = data {
-                completion(resource.parse(data))
-            }
-            else {
-                completion(nil)
-            }
-        }
+                let raw = try? NSJSONSerialization.JSONObjectWithData(data, options: [])
+                let json = raw as? [JSONDictionary]
 
-        task.resume()
+            }
+        }.resume()
+    }
+
+    func read<R where R: Resource, R.Result: protocol<ReadableEntity, Entity>, R.Flag == SingleFlag>(resource: R) {
+
+    }
+
+    func create<R where R: Resource, R.Result: protocol<CreatableEntity, Entity>, R.Flag == SingleFlag>(resource: R) {
+
+    }
+
+    func update<R where R: Resource, R.Result: protocol<UpdatableEntity, Entity>, R.Flag == SingleFlag>(resource: R) {
+
+    }
+
+    func destroy<R where R: Resource, R.Result: protocol<DestroyableEntity, Entity>, R.Flag == SingleFlag>(resource: R) {
+
     }
 }
 
