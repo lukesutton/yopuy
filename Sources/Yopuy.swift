@@ -1,8 +1,6 @@
 import Foundation
 import Unbox
 
-typealias JSONDictionary = [String: AnyObject]
-
 protocol Resource {
     associatedtype Result
     associatedtype Flag
