@@ -87,6 +87,13 @@ func / <P, C, X where P: Resource, C: ChildEntity, P.Result == C.ParentEntity>(r
     return fn(resource)
 }
 
+enum WebServiceResult<E> {
+    case success(E)
+    case parseError(ErrorType)
+    case requestError(ErrorType)
+    case unknownError
+}
+
 final class WebService {
     let root: NSURL
     let session: NSURLSession
@@ -101,18 +108,37 @@ final class WebService {
         self.session = NSURLSession(configuration: configuration)
     }
 
-    func list<R where R: Resource, R.Result: protocol<ListableEntity, Entity>, R.Flag == ListedEntity>(resource: R, completion: ([R.Result]?) -> Void) {
+    func list<R where R: Resource, R.Result: protocol<ListableEntity, Entity>, R.Flag == ListedEntity>(resource: R, completion: (WebServiceResult<[R.Result]>) -> Void) {
         let url = root.URLByAppendingPathComponent(resource.path)
-        let task = session.dataTaskWithURL(url) { data, _, _ in
-            if let data = data {
-              let result: [R.Result]? = try? Unbox(data)
-              completion(result)
+        let task = session.dataTaskWithURL(url) { data, _, error in
+          if let data = data {
+            do {
+              let result = try self.unbox(resource, data: data)
+              completion(.success(result))
             }
-            else {
-              completion(nil)
+            catch let error as UnboxError {
+              completion(.parseError(error))
             }
+            catch {
+              completion(.unknownError)
+            }
+
+          }
+          else if let error = error {
+            completion(.requestError(error))
+          }
         }
         task.resume()
+    }
+
+    func unbox<R where R: Resource, R.Result: Entity, R.Flag == SingleEntity>(resource: R, data: NSData) throws -> R.Result {
+      let result: R.Result = try Unbox(data)
+      return result
+    }
+
+    func unbox<R where R: Resource, R.Result: Entity, R.Flag == ListedEntity>(resource: R, data: NSData) throws -> [R.Result] {
+      let result: [R.Result] = try Unbox(data)
+      return result
     }
 
     func read<R where R: Resource, R.Result: protocol<ReadableEntity, Entity>, R.Flag == SingleEntity>(resource: R) {
