@@ -1,159 +1,178 @@
 import Foundation
-import Unbox
 
 protocol Resource {
-    associatedtype Result
-    associatedtype Flag
-    var path: String { get }
-}
-
-struct ListedEntity {}
-struct SingleEntity {}
-
-struct RootResource<Entity, F>: Resource {
-    typealias Result = Entity
-    typealias Flag = F
-    let path: String
-}
-
-struct ChildResource<Entity, F, Parent: Resource>: Resource {
-    typealias Result = Entity
-    typealias Flag = F
-    let path: String
-    let parent: Parent
-}
-
-protocol Entity: Unboxable {
+    associatedtype IDType
     static var path: String { get }
+    init(json: [String: Any]) throws
 }
 
-protocol ListableEntity: Entity {}
+protocol RootResource: Resource {
 
-protocol SingletonEntity: Entity {}
+}
 
-protocol CreatableEntity: Entity {}
+protocol ChildResource: Resource {
+    associatedtype Parent: Resource
+}
 
-protocol ReadableEntity: Entity {}
+protocol IsListable: Resource {
 
-protocol UpdatableEntity: Entity {}
+}
 
-protocol DestroyableEntity: Entity {}
-
-protocol FullEntity: ListableEntity, CreatableEntity, ReadableEntity, UpdatableEntity, DestroyableEntity {}
-
-protocol RootEntity: Entity {}
-
-extension RootEntity where Self: ListableEntity {
-    static func list() -> RootResource<Self, ListedEntity> {
-        return RootResource(path: Self.path)
+extension IsListable where Self: RootResource {
+    static var list: Path<Self, CollectionPath, GET> {
+        return Path(path: path)
     }
 }
 
-extension RootEntity where Self: ReadableEntity {
-    static func withID(id: String) -> RootResource<Self, SingleEntity> {
-        return RootResource(path: "\(Self.path)/\(id)")
+extension IsListable where Self: ChildResource {
+    static var list: ChildPath<Self, CollectionPath, GET> {
+        return ChildPath(path: path)
     }
 }
 
-protocol ChildEntity: Entity {
-    associatedtype ParentEntity
+protocol IsShowable: Resource {
+
 }
 
-extension ChildEntity where Self: ListableEntity {
-    static func list<R where R: Resource, R.Result == ParentEntity>(parent: R) -> ChildResource<Self, ListedEntity, R> {
-        return ChildResource(path: "\(parent.path)/\(Self.path)", parent: parent)
-    }
-
-    static func list<R where R: Resource, R.Result == ParentEntity>() -> (R) -> ChildResource<Self, ListedEntity, R> {
-        return { parent in
-            return Self.list(parent)
-        }
+extension IsShowable where Self: RootResource {
+    static func show(_ id: IDType) -> Path<Self, SingularPath, GET> {
+        return Path(path: "\(path)/\(id)")
     }
 }
 
-extension ChildEntity where Self: ReadableEntity {
-    static func withID<R where R: Resource, R.Result == ParentEntity>(parent: R, id: String) -> ChildResource<Self, SingleEntity, R> {
-        return ChildResource(path: "\(parent.path)/\(Self.path)/\(id)", parent: parent)
-    }
-
-    static func withID<R where R: Resource, R.Result == ParentEntity>(id: String) -> (R) -> ChildResource<Self, SingleEntity, R> {
-        return { parent in
-            return Self.withID(parent, id: id)
-        }
+extension IsShowable where Self: ChildResource {
+    static func show(_ id: IDType) -> ChildPath<Self, SingularPath, GET> {
+        return ChildPath(path: "\(path)/\(id)")
     }
 }
 
-func / <P, C, X where P: Resource, C: ChildEntity, P.Result == C.ParentEntity>(resource: P, fn: (P) -> ChildResource<C, X, P>) -> ChildResource<C, X, P> {
-    return fn(resource)
+protocol IsDeletable: Resource {
+
 }
 
-enum WebServiceResult<E> {
-    case success(E)
-    case parseError(ErrorType)
-    case requestError(ErrorType)
-    case unknownError
+extension IsDeletable where Self: RootResource {
+    static func delete(_ id: IDType) -> Path<Self, SingularPath, DELETE> {
+        return Path(path: "\(path)/\(id)")
+    }
 }
 
-final class WebService {
-    let root: NSURL
-    let session: NSURLSession
-
-    init(root: NSURL) {
-        self.root = root
-        self.session = NSURLSession.sharedSession()
+extension IsDeletable where Self: ChildResource {
+    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, DELETE> {
+        return ChildPath(path: "\(path)/\(id)")
     }
+}
 
-    init(root: NSURL, configuration: NSURLSessionConfiguration) {
-        self.root = root
-        self.session = NSURLSession(configuration: configuration)
+protocol IsCreatable {
+
+}
+
+extension IsCreatable where Self: RootResource {
+    static func delete(_ id: IDType) -> Path<Self, SingularPath, POST> {
+        return Path(path: "\(path)/\(id)")
     }
+}
 
-    func list<R where R: Resource, R.Result: protocol<ListableEntity, Entity>, R.Flag == ListedEntity>(resource: R, completion: (WebServiceResult<[R.Result]>) -> Void) {
-        let url = root.URLByAppendingPathComponent(resource.path)
-        let task = session.dataTaskWithURL(url) { data, _, error in
-          if let data = data {
-            do {
-              let result = try self.unbox(resource, data: data)
-              completion(.success(result))
-            }
-            catch let error as UnboxError {
-              completion(.parseError(error))
-            }
-            catch {
-              completion(.unknownError)
-            }
-
-          }
-          else if let error = error {
-            completion(.requestError(error))
-          }
-        }
-        task.resume()
+extension IsCreatable where Self: ChildResource {
+    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, POST> {
+        return ChildPath(path: "\(path)/\(id)")
     }
+}
 
-    func unbox<R where R: Resource, R.Result: Entity, R.Flag == SingleEntity>(resource: R, data: NSData) throws -> R.Result {
-      let result: R.Result = try Unbox(data)
-      return result
+
+protocol IsReplaceable {
+
+}
+
+extension IsReplaceable where Self: RootResource {
+    static func delete(_ id: IDType) -> Path<Self, SingularPath, PUT> {
+        return Path(path: "\(path)/\(id)")
     }
+}
 
-    func unbox<R where R: Resource, R.Result: Entity, R.Flag == ListedEntity>(resource: R, data: NSData) throws -> [R.Result] {
-      let result: [R.Result] = try Unbox(data)
-      return result
+extension IsReplaceable where Self: ChildResource {
+    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, PUT> {
+        return ChildPath(path: "\(path)/\(id)")
     }
+}
 
-    func read<R where R: Resource, R.Result: protocol<ReadableEntity, Entity>, R.Flag == SingleEntity>(resource: R) {
+protocol IsPatchable {
+
+}
+
+extension IsPatchable where Self: RootResource {
+    static func delete(_ id: IDType) -> Path<Self, SingularPath, PATCH> {
+        return Path(path: "\(path)/\(id)")
+    }
+}
+
+extension IsPatchable where Self: ChildResource {
+    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, PATCH> {
+        return ChildPath(path: "\(path)/\(id)")
+    }
+}
+
+protocol IsRESTFul: IsListable, IsCreatable, IsShowable, IsReplaceable, IsPatchable, IsDeletable {
+
+}
+
+enum CollectionPath {}
+enum SingularPath {}
+
+enum GET {}
+enum POST {}
+enum PUT {}
+enum PATCH {}
+enum DELETE {}
+
+struct Path<R: Resource, Path, Method> {
+    let path: String
+}
+
+struct ChildPath<R: ChildResource, Path, Method> {
+    let path: String
+}
+
+func / <P, C, F, M>(lhs: Path<P, SingularPath, GET>, rhs: ChildPath<C, F, M>) -> Path<C, F, M>
+    where P: IsShowable, C: ChildResource, C.Parent == P {
+    return Path(path: "\(lhs.path)/\(rhs.path)")
+}
+
+enum HTTPResult<Result> {
+    case empty
+    case data(Result)
+    case error(Error)
+}
+
+protocol HTTPAdapter {
+    typealias HTTPAdapterResult = HTTPResult<NSData>
+
+    func get(path: String, query: [String: Any]?, callback: (HTTPAdapterResult) -> Void)
+    func post(path: String, body: [String: Any], callback: (HTTPAdapterResult) -> Void)
+    func put(path: String, body: [String: Any], callback: (HTTPAdapterResult) -> Void)
+    func patch(path: String, body: [String: Any], callback: (HTTPAdapterResult) -> Void)
+    func delete(path: String, callback: (HTTPAdapterResult) -> Void)
+}
+
+struct Service<Adapter: HTTPAdapter>  {
+  typealias Handler<R> = (HTTPResult<R>) -> Void
+
+  private let adapter: Adapter
+
+  func call<R>(path: Path<R, CollectionPath, GET>, query: [String: Any]?, handler: Handler<[R]>) {
+    adapter.get(path: path.path, query: query) { data in
 
     }
+  }
 
-    func create<R where R: Resource, R.Result: protocol<CreatableEntity, Entity>, R.Flag == SingleEntity>(resource: R) {
-
-    }
-
-    func update<R where R: Resource, R.Result: protocol<UpdatableEntity, Entity>, R.Flag == SingleEntity>(resource: R) {
+  func call<R>(path: Path<R, CollectionPath, POST>, body: [String: Any], handler: Handler<[R]>) {
+    adapter.post(path: path.path, body: body) { data in
 
     }
+  }
 
-    func destroy<R where R: Resource, R.Result: protocol<DestroyableEntity, Entity>, R.Flag == SingleEntity>(resource: R) {
+  func call<R>(path: Path<R, SingularPath, GET>, query: [String: Any]?, handler: Handler<R>) {
+    adapter.get(path: path.path, query: query) { result in
 
     }
+  }
 }
