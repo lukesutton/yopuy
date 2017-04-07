@@ -66,12 +66,16 @@ let e = Post.show(1) / Comment.show(2) / Commenter.delete(1)
 
 There are a few interesting things about the example above:
 
-- It's designed so that a `create` path can't be constructed for the `Commenter` resource
+- Resources are either `RootResource` or `ChildResource` which dictates how they can be used
 - Constructing a path like `Post.show(1) / Commenter.show(5)` is a type-error, since `Commenter` has `Comment` as it's parent
+- Making `Post` a child is a type error, since it is a `RootResource`
+- Constructing a path with a child resource at the root is also a type-error
+- It's configured so that a `create` path can't be constructed for the `Commenter` resource
 - Paths also encode the HTTP verb
 - Parsing is entirely delegated to your code; use whatever parsing library you prefer
 - The operations on collections and resources are encoded in separate protocols — e.g. `IsDeletable`, `IsListable` — meaning you can pick and choose what you include
 - `IsRESTful` is just a shortcut for including all the `Is*` protocols on a resource
+- Declaring a resource without the `IsRESTful` or `Is*` protocols means they're useless, all methods come from optional protocols
 
 ## Making a request
 
