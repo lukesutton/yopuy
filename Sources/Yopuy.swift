@@ -1,12 +1,12 @@
 import Foundation
 
 protocol Resource {
-    associatedtype IDType
-    associatedtype SingularType
-    associatedtype CollectionType
+    associatedtype ID
+    associatedtype Singular
+    associatedtype Collection
     static var path: String { get }
-    static func parseSingular(data: Data) throws -> SingularType
-    static func parseCollection(data: Data) throws -> CollectionType
+    static func parse(singular data: Data) throws -> Singular
+    static func parse(collection data: Data) throws -> Collection
 }
 
 protocol RootResource: Resource {
@@ -55,13 +55,13 @@ protocol IsShowable: Resource {
 }
 
 extension IsShowable where Self: RootResource {
-    static func show(_ id: IDType) -> Path<Self, SingularPath, GET> {
+    static func show(_ id: ID) -> Path<Self, SingularPath, GET> {
         return Path(path: "\(path)/\(id)")
     }
 }
 
 extension IsShowable where Self: ChildResource {
-    static func show(_ id: IDType) -> ChildPath<Self, SingularPath, GET> {
+    static func show(_ id: ID) -> ChildPath<Self, SingularPath, GET> {
         return ChildPath(path: "\(path)/\(id)")
     }
 }
@@ -71,13 +71,13 @@ protocol IsDeletable: Resource {
 }
 
 extension IsDeletable where Self: RootResource {
-    static func delete(_ id: IDType) -> Path<Self, SingularPath, DELETE> {
+    static func delete(_ id: ID) -> Path<Self, SingularPath, DELETE> {
         return Path(path: "\(path)/\(id)")
     }
 }
 
 extension IsDeletable where Self: ChildResource {
-    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, DELETE> {
+    static func delete(_ id: ID) -> ChildPath<Self, SingularPath, DELETE> {
         return ChildPath(path: "\(path)/\(id)")
     }
 }
@@ -87,13 +87,13 @@ protocol IsCreatable {
 }
 
 extension IsCreatable where Self: RootResource {
-    static func delete(_ id: IDType) -> Path<Self, SingularPath, POST> {
+    static func delete(_ id: ID) -> Path<Self, SingularPath, POST> {
         return Path(path: "\(path)/\(id)")
     }
 }
 
 extension IsCreatable where Self: ChildResource {
-    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, POST> {
+    static func delete(_ id: ID) -> ChildPath<Self, SingularPath, POST> {
         return ChildPath(path: "\(path)/\(id)")
     }
 }
@@ -104,13 +104,13 @@ protocol IsReplaceable {
 }
 
 extension IsReplaceable where Self: RootResource {
-    static func delete(_ id: IDType) -> Path<Self, SingularPath, PUT> {
+    static func delete(_ id: ID) -> Path<Self, SingularPath, PUT> {
         return Path(path: "\(path)/\(id)")
     }
 }
 
 extension IsReplaceable where Self: ChildResource {
-    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, PUT> {
+    static func delete(_ id: ID) -> ChildPath<Self, SingularPath, PUT> {
         return ChildPath(path: "\(path)/\(id)")
     }
 }
@@ -120,13 +120,13 @@ protocol IsPatchable {
 }
 
 extension IsPatchable where Self: RootResource {
-    static func delete(_ id: IDType) -> Path<Self, SingularPath, PATCH> {
+    static func delete(_ id: ID) -> Path<Self, SingularPath, PATCH> {
         return Path(path: "\(path)/\(id)")
     }
 }
 
 extension IsPatchable where Self: ChildResource {
-    static func delete(_ id: IDType) -> ChildPath<Self, SingularPath, PATCH> {
+    static func delete(_ id: ID) -> ChildPath<Self, SingularPath, PATCH> {
         return ChildPath(path: "\(path)/\(id)")
     }
 }
@@ -178,39 +178,39 @@ struct Service<Adapter: HTTPAdapter>  {
 
   private let adapter: Adapter
 
-  func call<R: Resource>(path: Path<R, CollectionPath, GET>, query: [String: Any]?, handler: Handler<R.CollectionType>) {
+  func call<R: Resource>(path: Path<R, CollectionPath, GET>, query: [String: Any]?, handler: Handler<R.Collection>) {
     adapter.get(path: path.path, query: query) { result in
-      handler(parse(result: result, with: R.parseCollection))
+      handler(parse(result: result, with: R.parse(collection:)))
     }
   }
 
-  func call<R: Resource>(path: Path<R, CollectionPath, POST>, body: [String: Any], handler: Handler<R.CollectionType>) {
+  func call<R: Resource>(path: Path<R, CollectionPath, POST>, body: [String: Any], handler: Handler<R.Collection>) {
     adapter.post(path: path.path, body: body) { result in
-      handler(parse(result: result, with: R.parseCollection))
+      handler(parse(result: result, with: R.parse(collection:)))
     }
   }
 
-  func call<R: Resource>(path: Path<R, SingularPath, GET>, query: [String: Any]?, handler: Handler<R.SingularType>) {
+  func call<R: Resource>(path: Path<R, SingularPath, GET>, query: [String: Any]?, handler: Handler<R.Singular>) {
     adapter.get(path: path.path, query: query) { result in
-      handler(parse(result: result, with: R.parseSingular))
+      handler(parse(result: result, with: R.parse(singular:)))
     }
   }
 
-  func call<R: Resource>(path: Path<R, SingularPath, PUT>, body: [String: Any], handler: Handler<R.SingularType>) {
+  func call<R: Resource>(path: Path<R, SingularPath, PUT>, body: [String: Any], handler: Handler<R.Singular>) {
     adapter.put(path: path.path, body: body) { result in
-      handler(parse(result: result, with: R.parseSingular))
+      handler(parse(result: result, with: R.parse(singular:)))
     }
   }
 
-  func call<R: Resource>(path: Path<R, SingularPath, PATCH>, body: [String: Any], handler: Handler<R.SingularType>) {
+  func call<R: Resource>(path: Path<R, SingularPath, PATCH>, body: [String: Any], handler: Handler<R.Singular>) {
     adapter.patch(path: path.path, body: body) { result in
-      handler(parse(result: result, with: R.parseSingular))
+      handler(parse(result: result, with: R.parse(singular:)))
     }
   }
 
-  func call<R: Resource>(path: Path<R, SingularPath, DELETE>, handler: Handler<R.SingularType>) {
+  func call<R: Resource>(path: Path<R, SingularPath, DELETE>, handler: Handler<R.Singular>) {
     adapter.delete(path: path.path) { result in
-      handler(parse(result: result, with: R.parseSingular))
+      handler(parse(result: result, with: R.parse(singular:)))
     }
   }
 

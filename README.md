@@ -12,30 +12,75 @@ This is a simple example of how we can encode a type-safe hierarchy of resources
 
 ```swift
 struct Post: RootResource, IsRESTFul {
-    typealias IDType = Int
+    typealias ID = Int
+    typealias Collection = [Post]
+    typealias Singular = Post
     static let path = "posts"
-    init(json: [String: Any]) {
+    let id: Int
 
+    static func parse(collection data: Data) throws -> Collection {
+      return []
+    }
+
+    static func parse(singular data: Data) throws -> Singular {
+      return Post(id: 20)
     }
 }
 
 struct Comment: ChildResource, IsRESTFul {
-    typealias IDType = Int
+    typealias ID = Int
     typealias Parent = Post
+    typealias Collection = [Comment]
+    typealias Singular = Comment
     static let path = "comments"
-    init(json: [String: Any]) {
+    let id: Int
 
+    static func parse(collection data: Data) throws -> Collection {
+      return []
+    }
+
+    static func parse(singular data: Data) throws -> Singular {
+      return Comment(id: 20)
     }
 }
 
 struct Commenter: ChildResource, IsShowable, IsListable, IsDeletable {
-    typealias IDType = Int
+    typealias ID = Int
     typealias Parent = Comment
+    typealias Collection = [Commenter]
+    typealias Singular = Commenter
     static let path = "commenter"
-    init(json: [String: Any]) {
+    let id: Int
 
+    static func parse(collection data: Data) throws -> Collection {
+      return []
+    }
+
+    static func parse(singular data: Data) throws -> Singular {
+      return Commenter(id: 20)
     }
 }
 
 let e = Post.show(1) / Comment.show(2) / Commenter.delete(1)
+```
+
+There are a few interesting things about the example above:
+
+- It's designed so that a `create` path can't be constructed for the `Commenter` resource
+- Constructing a path like `Post.show(1) / Commenter.show(5)` is a type-error, since `Commenter` has `Comment` as it's parent
+- Paths also encode the HTTP verb
+- Parsing is entirely delegated to your code; use whatever parsing library you prefer
+- The operations on collections and resources are encoded in separate protocols — e.g. `IsDeletable`, `IsListable` — meaning you can pick and choose what you include
+- `IsRESTful` is just a shortcut for including all the `Is*` protocols on a resource
+
+## Making a request
+
+The request component of Yopuy is designed so that it is un-opinionated about the HTTP library you use. The only requirement is that your HTTP client conforms to the `HTTPAdapter` protocol i.e. it supports `GET`, `POST`, `PUT`, `PATCH` and `DELETE` requests.
+
+```swift
+let service = Service(adapter: YourFancyAdapter())
+let comment = Post.show(1) / Comment.show(12)
+service.call(comment) { result in
+  print(result)
+}
 ```
