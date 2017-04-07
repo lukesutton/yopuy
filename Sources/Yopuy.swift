@@ -2,8 +2,11 @@ import Foundation
 
 protocol Resource {
     associatedtype IDType
+    associatedtype SingularType
+    associatedtype CollectionType
     static var path: String { get }
-    init(json: [String: Any]) throws
+    static func parseSingular(data: Data) throws -> SingularType
+    static func parseCollection(data: Data) throws -> CollectionType
 }
 
 protocol RootResource: Resource {
@@ -14,8 +17,25 @@ protocol ChildResource: Resource {
     associatedtype Parent: Resource
 }
 
-protocol IsListable: Resource {
+protocol Defaults: Resource {
+  init(json: [String: Any]) throws
+}
 
+extension Defaults {
+  static func parseCollection(data: Data) throws -> [Self] {
+       let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+       let resources = try json.map { try Self(json: $0) }
+       return resources
+  }
+
+  static func parseSingular(data: Data) throws -> Self {
+       let json = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+       let resource = try Self(json: json)
+       return resource
+  }
+}
+
+protocol IsListable: Resource {
 }
 
 extension IsListable where Self: RootResource {
@@ -144,7 +164,7 @@ enum HTTPResult<Result> {
 }
 
 protocol HTTPAdapter {
-    typealias HTTPAdapterResult = HTTPResult<NSData>
+    typealias HTTPAdapterResult = HTTPResult<Data>
 
     func get(path: String, query: [String: Any]?, callback: (HTTPAdapterResult) -> Void)
     func post(path: String, body: [String: Any], callback: (HTTPAdapterResult) -> Void)
@@ -158,21 +178,56 @@ struct Service<Adapter: HTTPAdapter>  {
 
   private let adapter: Adapter
 
-  func call<R>(path: Path<R, CollectionPath, GET>, query: [String: Any]?, handler: Handler<[R]>) {
-    adapter.get(path: path.path, query: query) { data in
-
-    }
-  }
-
-  func call<R>(path: Path<R, CollectionPath, POST>, body: [String: Any], handler: Handler<[R]>) {
-    adapter.post(path: path.path, body: body) { data in
-
-    }
-  }
-
-  func call<R>(path: Path<R, SingularPath, GET>, query: [String: Any]?, handler: Handler<R>) {
+  func call<R: Resource>(path: Path<R, CollectionPath, GET>, query: [String: Any]?, handler: Handler<R.CollectionType>) {
     adapter.get(path: path.path, query: query) { result in
+      handler(parse(result: result, with: R.parseCollection))
+    }
+  }
 
+  func call<R: Resource>(path: Path<R, CollectionPath, POST>, body: [String: Any], handler: Handler<R.CollectionType>) {
+    adapter.post(path: path.path, body: body) { result in
+      handler(parse(result: result, with: R.parseCollection))
+    }
+  }
+
+  func call<R: Resource>(path: Path<R, SingularPath, GET>, query: [String: Any]?, handler: Handler<R.SingularType>) {
+    adapter.get(path: path.path, query: query) { result in
+      handler(parse(result: result, with: R.parseSingular))
+    }
+  }
+
+  func call<R: Resource>(path: Path<R, SingularPath, PUT>, body: [String: Any], handler: Handler<R.SingularType>) {
+    adapter.put(path: path.path, body: body) { result in
+      handler(parse(result: result, with: R.parseSingular))
+    }
+  }
+
+  func call<R: Resource>(path: Path<R, SingularPath, PATCH>, body: [String: Any], handler: Handler<R.SingularType>) {
+    adapter.patch(path: path.path, body: body) { result in
+      handler(parse(result: result, with: R.parseSingular))
+    }
+  }
+
+  func call<R: Resource>(path: Path<R, SingularPath, DELETE>, handler: Handler<R.SingularType>) {
+    adapter.delete(path: path.path) { result in
+      handler(parse(result: result, with: R.parseSingular))
+    }
+  }
+
+  private func parse<T>(result: HTTPResult<Data>, with parser: (Data) throws -> T) -> HTTPResult<T> {
+    switch result {
+    case .empty:
+      return .empty
+    case let .error(error):
+      return .error(error)
+    case let .data(data):
+      do {
+        let result = try parser(data)
+        return .data(result)
+      }
+      catch let error {
+        return .error(error)
+      }
     }
   }
 }
