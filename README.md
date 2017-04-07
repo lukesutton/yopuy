@@ -76,6 +76,7 @@ There are a few interesting things about the example above:
 - The operations on collections and resources are encoded in separate protocols — e.g. `IsDeletable`, `IsListable` — meaning you can pick and choose what you include
 - `IsRESTful` is just a shortcut for including all the `Is*` protocols on a resource
 - Declaring a resource without the `IsRESTful` or `Is*` protocols means they're useless, all methods come from optional protocols
+- Using typealias means the results of your requests can be arbitrary types e.g. `CustomCollection<Post>`
 
 ## Making a request
 

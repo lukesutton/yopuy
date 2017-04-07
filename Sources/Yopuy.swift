@@ -4,6 +4,7 @@ protocol Resource {
     associatedtype ID
     associatedtype Singular
     associatedtype Collection
+    var id: ID { get }
     static var path: String { get }
     static func parse(singular data: Data) throws -> Singular
     static func parse(collection data: Data) throws -> Collection
@@ -58,11 +59,19 @@ extension IsShowable where Self: RootResource {
     static func show(_ id: ID) -> Path<Self, SingularPath, GET> {
         return Path(path: "\(path)/\(id)")
     }
+
+    var show: Path<Self, SingularPath, GET> {
+      return Self.show(id)
+    }
 }
 
 extension IsShowable where Self: ChildResource {
     static func show(_ id: ID) -> ChildPath<Self, SingularPath, GET> {
         return ChildPath(path: "\(path)/\(id)")
+    }
+
+    var show: ChildPath<Self, SingularPath, GET> {
+      return Self.show(id)
     }
 }
 
@@ -74,11 +83,19 @@ extension IsDeletable where Self: RootResource {
     static func delete(_ id: ID) -> Path<Self, SingularPath, DELETE> {
         return Path(path: "\(path)/\(id)")
     }
+
+    var delete: Path<Self, SingularPath, DELETE> {
+      return Self.delete(id)
+    }
 }
 
 extension IsDeletable where Self: ChildResource {
     static func delete(_ id: ID) -> ChildPath<Self, SingularPath, DELETE> {
         return ChildPath(path: "\(path)/\(id)")
+    }
+
+    var delete: ChildPath<Self, SingularPath, DELETE> {
+      return Self.delete(id)
     }
 }
 
@@ -87,14 +104,14 @@ protocol IsCreatable {
 }
 
 extension IsCreatable where Self: RootResource {
-    static func delete(_ id: ID) -> Path<Self, SingularPath, POST> {
-        return Path(path: "\(path)/\(id)")
+    static var create: Path<Self, SingularPath, POST> {
+        return Path(path: path)
     }
 }
 
 extension IsCreatable where Self: ChildResource {
-    static func delete(_ id: ID) -> ChildPath<Self, SingularPath, POST> {
-        return ChildPath(path: "\(path)/\(id)")
+    static var create: ChildPath<Self, SingularPath, POST> {
+        return ChildPath(path: path)
     }
 }
 
@@ -104,14 +121,22 @@ protocol IsReplaceable {
 }
 
 extension IsReplaceable where Self: RootResource {
-    static func delete(_ id: ID) -> Path<Self, SingularPath, PUT> {
+    static func replace(_ id: ID) -> Path<Self, SingularPath, PUT> {
         return Path(path: "\(path)/\(id)")
+    }
+
+    var replace: Path<Self, SingularPath, PUT> {
+      return Self.replace(id)
     }
 }
 
 extension IsReplaceable where Self: ChildResource {
-    static func delete(_ id: ID) -> ChildPath<Self, SingularPath, PUT> {
+    static func replace(_ id: ID) -> ChildPath<Self, SingularPath, PUT> {
         return ChildPath(path: "\(path)/\(id)")
+    }
+
+    var replace: ChildPath<Self, SingularPath, PUT> {
+      return Self.replace(id)
     }
 }
 
@@ -120,14 +145,22 @@ protocol IsPatchable {
 }
 
 extension IsPatchable where Self: RootResource {
-    static func delete(_ id: ID) -> Path<Self, SingularPath, PATCH> {
+    static func update(_ id: ID) -> Path<Self, SingularPath, PATCH> {
         return Path(path: "\(path)/\(id)")
+    }
+
+    var update: Path<Self, SingularPath, PATCH> {
+      return Self.update(id)
     }
 }
 
 extension IsPatchable where Self: ChildResource {
-    static func delete(_ id: ID) -> ChildPath<Self, SingularPath, PATCH> {
+    static func update(_ id: ID) -> ChildPath<Self, SingularPath, PATCH> {
         return ChildPath(path: "\(path)/\(id)")
+    }
+
+    var update: ChildPath<Self, SingularPath, PATCH> {
+      return Self.update(id)
     }
 }
 
