@@ -86,13 +86,13 @@ public protocol IsCreatable {
 }
 
 extension IsCreatable where Self: RootResource {
-    public static var create: Path<Self, CollectionPath, POST> {
+    public static var create: Path<Self, SingularPath, POST> {
         return Path(path: path)
     }
 }
 
 extension IsCreatable where Self: ChildResource {
-    public static var create: ChildPath<Self, CollectionPath, POST> {
+    public static var create: ChildPath<Self, SingularPath, POST> {
         return ChildPath(path: path)
     }
 }

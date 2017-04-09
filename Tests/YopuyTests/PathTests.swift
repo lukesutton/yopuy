@@ -16,7 +16,7 @@ class PathTests: XCTestCase {
 
   func testRootCreatePath() {
     let path = Post.create
-    XCTAssert((path as Any) is Path<Post, CollectionPath, POST>)
+    XCTAssert((path as Any) is Path<Post, SingularPath, POST>)
     XCTAssertEqual(path.path, "posts")
   }
 
@@ -52,7 +52,7 @@ class PathTests: XCTestCase {
 
   func testNestedCreatePath() {
     let path = Post.show(2) / Comment.create
-    XCTAssert((path as Any) is Path<Comment, CollectionPath, POST>)
+    XCTAssert((path as Any) is Path<Comment, SingularPath, POST>)
     XCTAssertEqual(path.path, "posts/2/comments")
   }
 

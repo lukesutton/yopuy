@@ -14,13 +14,13 @@ struct Post: RootResource, IsRESTFul {
 
 
     static func parse(collection data: Data) throws -> Collection {
-      print("Parsing collection")
       let json = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]
       return try json!.map { try Post(json: $0) }
     }
 
     static func parse(singular data: Data) throws -> Singular {
-      return Post(id: 20)
+      let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+      return Post(id: json!["id"] as! Int)
     }
 }
 

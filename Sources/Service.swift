@@ -15,13 +15,13 @@ public struct Service<Adapter: HTTPAdapter>  {
     }
   }
 
-  public func call<R: Resource>(_ path: Path<R, CollectionPath, POST>, body: [String: Any], handler: Handler<R.Collection>) {
+  public func call<R: Resource>(_ path: Path<R, SingularPath, POST>, body: [String: Any], handler: Handler<R.Singular>) {
     adapter.post(path: path.path, body: body) { result in
-      handler(parse(result: result, with: R.parse(collection:)))
+      handler(parse(result: result, with: R.parse(singular:)))
     }
   }
 
-  public func call<R: Resource>(_ path: Path<R, SingularPath, GET>, query: [String: Any]?, handler: Handler<R.Singular>) {
+  public func call<R: Resource>(_ path: Path<R, SingularPath, GET>, query: [String: Any]? = nil, handler: Handler<R.Singular>) {
     adapter.get(path: path.path, query: query) { result in
       handler(parse(result: result, with: R.parse(singular:)))
     }
