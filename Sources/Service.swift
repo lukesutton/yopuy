@@ -1,19 +1,22 @@
 import Foundation
 
-struct URLGenerationError: Error {
-  let message: String
-
-  init(host: URL, path: String) {
-    self.message = "Cannot create a full URL from the host \(host) and path \(path)"
-  }
-}
-
+/**
+  A struct which wraps interaction with a remote API. It delegates all the HTTP
+  requests to the underlying adapter.
+*/
 public struct Service<Adapter: HTTPAdapter>  {
   public typealias Handler<R> = (HTTPResult<R>) -> Void
 
   private let adapter: Adapter
+
+  /**
+    The root URL for the remote API. All requests will be made relative to this.
+  */
   public let host: URL
 
+  /**
+    Create a new instance of a service using an adapter and a root URL.
+  */
   public init(adapter: Adapter, host: URL) {
     self.adapter = adapter
     self.host = host

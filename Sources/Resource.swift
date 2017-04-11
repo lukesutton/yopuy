@@ -1,20 +1,73 @@
 import Foundation
 
+/**
+  Defines the base requirements for types that interact with Yopuy.
+
+  **Note:** This protocol should not be used directly, instead use the
+  `RootResource` and `ChildResource` protocols.
+*/
 public protocol Resource {
+    /**
+      The type used to identify a resource e.g. a `UUID` or `String`
+    */
     associatedtype ID
+
+    /**
+      The expected return type when parsing a single resource. This is explict
+      rather than defaulting to `Self` so that custom wrapper types can be
+      specified if required.
+    */
     associatedtype Singular
+
+    /**
+      The expected return type when parsing a collection of resources. This is
+      explict rather than defaulting to `[Self]` so that custom wrapper types
+      can be specified if required.
+    */
     associatedtype Collection
+
+    /**
+      A getter for a resource's identifier.
+    */
     var id: ID { get }
+
+    /**
+      A getter for the string that represents a resource's collection e.g.
+      `"users"` or `"posts"`. It should only be a partial path. It must _not_
+      include the host or refer to parent resources.
+    */
     static var path: String { get }
+
+    /**
+      A static function required for parsing a single resource. The `Data` is
+      the result from a call to the network.
+    */
     static func parse(singular data: Data) throws -> Singular
+
+    /**
+      A static function required for parsing a collection of resources. The
+      `Data` is the result from a call to the network.
+    */
     static func parse(collection data: Data) throws -> Collection
 }
 
+/**
+  Defines a resource that exists at the root of the remote API.
+*/
 public protocol RootResource: Resource {
 
 }
 
+/**
+  Defines a resource that is related to a parent resource, which may be a
+  `RootResource` or another `ChildResource`. This is done via the
+  `associatedtype Parent` declaration. This is used as a constraint in order to
+  direct the type-safe construction of paths which are used for requests.
+*/
 public protocol ChildResource: Resource {
+    /**
+      The resource to which `Self` is related to.
+    */
     associatedtype Parent: Resource
 }
 
