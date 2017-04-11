@@ -71,69 +71,129 @@ public protocol ChildResource: Resource {
     associatedtype Parent: Resource
 }
 
+/**
+  Flags a resource as being listable i.e. it has a collection. This protocol
+  does nothing by itself, but has constrained extensions for types implementing
+  `RootResource` and `ChildResource`.
+*/
 public protocol IsListable: Resource {
 }
 
 extension IsListable where Self: RootResource {
+    /**
+      A static value for `RootResource` which returns a `Path` that encodes
+      a `GET` request for listing resources.
+    */
     public static var list: Path<Self, CollectionPath, GET> {
         return Path(path: path)
     }
 }
 
 extension IsListable where Self: ChildResource {
+    /**
+      A static value for `ChildResource` which returns a `Path` that encodes
+      a `GET` request for listing resources.
+    */
     public static var list: ChildPath<Self, CollectionPath, GET> {
         return ChildPath(path: path)
     }
 }
 
+/**
+  Flags a resource as being showable i.e. a single resource can be requested.
+  This protocol does nothing by itself, but has constrained extensions for types
+  implementing `RootResource` and `ChildResource`.
+*/
 public protocol IsShowable: Resource {
 
 }
 
 extension IsShowable where Self: RootResource {
+    /**
+      A static function for `RootResource` which returns a `Path` that encodes
+      a `GET` request for single resource.
+    */
     public static func show(_ id: ID) -> Path<Self, SingularPath, GET> {
         return Path(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `RootResource` which returns a `Path`
+      that encodes a `GET` request for that resource.
+    */
     public var show: Path<Self, SingularPath, GET> {
       return Self.show(id)
     }
 }
 
 extension IsShowable where Self: ChildResource {
+    /**
+      A static function for `ChildResource` which returns a `Path` that encodes
+      a `GET` request for single resource.
+    */
     public static func show(_ id: ID) -> ChildPath<Self, SingularPath, GET> {
         return ChildPath(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `ChildResource` which returns a `Path`
+      that encodes a `GET` request for that resource.
+    */
     public var show: ChildPath<Self, SingularPath, GET> {
       return Self.show(id)
     }
 }
 
+/**
+  Flags a resource as being deletable. This protocol does nothing by itself, but
+  has constrained extensions for types implementing `RootResource` and
+  `ChildResource`.
+*/
 public protocol IsDeletable: Resource {
 
 }
 
 extension IsDeletable where Self: RootResource {
+    /**
+      A static function for `RootResource` which returns a `Path` that encodes
+      a `DELETE` request for single resource.
+    */
     public static func delete(_ id: ID) -> Path<Self, SingularPath, DELETE> {
         return Path(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `RootResource` which returns a `Path`
+      that encodes a `DELETE` request for that resource.
+    */
     public var delete: Path<Self, SingularPath, DELETE> {
       return Self.delete(id)
     }
 }
 
 extension IsDeletable where Self: ChildResource {
+    /**
+      A static function for `ChildResource` which returns a `Path` that encodes
+      a `DELETE` request for single resource.
+    */
     public static func delete(_ id: ID) -> ChildPath<Self, SingularPath, DELETE> {
         return ChildPath(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `ChildResource` which returns a `Path`
+      that encodes a `DELETE` request for that resource.
+    */
     public var delete: ChildPath<Self, SingularPath, DELETE> {
       return Self.delete(id)
     }
 }
 
+/**
+  Flags a resource as being creatable. This protocol does nothing by itself, but
+  has constrained extensions for types implementing `RootResource` and
+  `ChildResource`.
+*/
 public protocol IsCreatable {
 
 }
@@ -150,7 +210,11 @@ extension IsCreatable where Self: ChildResource {
     }
 }
 
-
+/**
+  Flags a resource as being replacable i.e. supports `PUT`. This protocol does
+  nothing by itself, but has constrained extensions for types implementing
+  `RootResource` and `ChildResource`.
+*/
 public protocol IsReplaceable {
 
 }
@@ -175,6 +239,11 @@ extension IsReplaceable where Self: ChildResource {
     }
 }
 
+/**
+  Flags a resource as being patchable i.e. supports `PATCH`. This protocol does
+  nothing by itself, but has constrained extensions for types implementing
+  `RootResource` and `ChildResource`.
+*/
 public protocol IsPatchable {
 
 }
@@ -199,6 +268,17 @@ extension IsPatchable where Self: ChildResource {
     }
 }
 
+/**
+  A convenience protocol which allows a resource to opt into all of the `Is*`
+  protocols. It will add:
+
+  - `IsListable`
+  - `IsCreatable`
+  - `IsShowable`
+  - `IsReplaceable`
+  - `IsPatchable`
+  - `IsDeletable`
+*/
 public protocol IsRESTFul: IsListable, IsCreatable, IsShowable, IsReplaceable, IsPatchable, IsDeletable {
 
 }
