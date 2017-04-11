@@ -11,23 +11,23 @@ struct Adapter: HTTPAdapter {
 
   let response: Response
 
-  func get(path: String, query: [String: Any]?, callback: (HTTPAdapterResult) -> Void) {
+  func get(url: URL, query: [String: Any]?, callback: @escaping (HTTPAdapterResult) -> Void) {
     callback(encode(response))
   }
 
-  func post(path: String, body: [String: Any], callback: (HTTPAdapterResult) -> Void) {
+  func post(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
     callback(encode(response))
   }
 
-  func put(path: String, body: [String: Any], callback: (HTTPAdapterResult) -> Void) {
+  func put(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
     callback(encode(response))
   }
 
-  func patch(path: String, body: [String: Any], callback: (HTTPAdapterResult) -> Void) {
+  func patch(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
     callback(encode(response))
   }
 
-  func delete(path: String, callback: (HTTPAdapterResult) -> Void) {
+  func delete(url: URL, callback: @escaping (HTTPAdapterResult) -> Void) {
     callback(encode(response))
   }
 
