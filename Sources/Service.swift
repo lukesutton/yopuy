@@ -22,36 +22,55 @@ public struct Service<Adapter: HTTPAdapter>  {
     self.host = host
   }
 
+  /**
+    Makes a `GET` request to an endpoint which returns a collection.
+  */
   public func call<R: Resource>(_ path: Path<R, CollectionPath, GET>, query: [String: Any]? = nil, handler: @escaping Handler<R.Collection>) {
     adapter.get(url: url(path), query: query) { result in
       handler(self.parse(result: result, with: R.parse(collection:)))
     }
   }
 
+  /**
+    Makes a `POST` request to an endpoint which returns a resource.
+  */
   public func call<R: Resource>(_ path: Path<R, SingularPath, POST>, body: [String: Any], handler: @escaping Handler<R.Singular>) {
     adapter.post(url: url(path), body: body) { result in
       handler(self.parse(result: result, with: R.parse(singular:)))
     }
   }
 
+  /**
+    Makes a `GET` request to an endpoint which returns a resource.
+  */
   public func call<R: Resource>(_ path: Path<R, SingularPath, GET>, query: [String: Any]? = nil, handler: @escaping Handler<R.Singular>) {
     adapter.get(url: url(path), query: query) { result in
       handler(self.parse(result: result, with: R.parse(singular:)))
     }
   }
 
+  /**
+    Makes a `PUT` request to an endpoint which returns a resource.
+  */
   public func call<R: Resource>(_ path: Path<R, SingularPath, PUT>, body: [String: Any], handler: @escaping Handler<R.Singular>) {
     adapter.put(url: url(path), body: body) { result in
       handler(self.parse(result: result, with: R.parse(singular:)))
     }
   }
 
+  /**
+    Makes a `PATCH` request to an endpoint which returns a resource.
+  */
   public func call<R: Resource>(_ path: Path<R, SingularPath, PATCH>, body: [String: Any], handler: @escaping Handler<R.Singular>) {
     adapter.patch(url: url(path), body: body) { result in
       handler(self.parse(result: result, with: R.parse(singular:)))
     }
   }
 
+  /**
+    Makes a `DELETE` request to an endpoint which — optionally — returns a
+    resource.
+  */
   public func call<R: Resource>(_ path: Path<R, SingularPath, DELETE>, handler: @escaping Handler<R.Singular>) {
     adapter.delete(url: url(path)) { result in
       handler(self.parse(result: result, with: R.parse(singular:)))

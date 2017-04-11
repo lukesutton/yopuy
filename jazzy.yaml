@@ -1,0 +1,7 @@
+output: docs
+author: Luke Sutton
+author_url: https://github.com/lukesutton
+github_url: https://github.com/lukesutton/yopuy
+root_url: https://lukesutton.github.io/yopuy
+swift_version: 3.1
+module: Yopuy

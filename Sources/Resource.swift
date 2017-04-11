@@ -199,12 +199,20 @@ public protocol IsCreatable {
 }
 
 extension IsCreatable where Self: RootResource {
+    /**
+      A static function for `RootResource` which returns a `Path` that encodes
+      a `POST` request for single resource.
+    */
     public static var create: Path<Self, SingularPath, POST> {
         return Path(path: path)
     }
 }
 
 extension IsCreatable where Self: ChildResource {
+    /**
+      A static function for `ChildResource` which returns a `Path` that encodes
+      a `POST` request for single resource.
+    */
     public static var create: ChildPath<Self, SingularPath, POST> {
         return ChildPath(path: path)
     }
@@ -220,20 +228,36 @@ public protocol IsReplaceable {
 }
 
 extension IsReplaceable where Self: RootResource {
+    /**
+      A static function for `RootResource` which returns a `Path` that encodes
+      a `PUT` request for single resource.
+    */
     public static func replace(_ id: ID) -> Path<Self, SingularPath, PUT> {
         return Path(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `RootResource` which returns a `Path`
+      that encodes a `PUT` request for that resource.
+    */
     public var replace: Path<Self, SingularPath, PUT> {
       return Self.replace(id)
     }
 }
 
 extension IsReplaceable where Self: ChildResource {
+    /**
+      A static function for `ChildResource` which returns a `Path` that encodes
+      a `PUT` request for single resource.
+    */
     public static func replace(_ id: ID) -> ChildPath<Self, SingularPath, PUT> {
         return ChildPath(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `ChildResource` which returns a `Path`
+      that encodes a `PUT` request for that resource.
+    */
     public var replace: ChildPath<Self, SingularPath, PUT> {
       return Self.replace(id)
     }
@@ -249,20 +273,36 @@ public protocol IsPatchable {
 }
 
 extension IsPatchable where Self: RootResource {
+    /**
+      A static function for `RootResource` which returns a `Path` that encodes
+      a `PATCH` request for single resource.
+    */
     public static func update(_ id: ID) -> Path<Self, SingularPath, PATCH> {
         return Path(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `RootResource` which returns a `Path`
+      that encodes a `PATCH` request for that resource.
+    */
     public var update: Path<Self, SingularPath, PATCH> {
       return Self.update(id)
     }
 }
 
 extension IsPatchable where Self: ChildResource {
+    /**
+      A static function for `ChildResource` which returns a `Path` that encodes
+      a `PATCH` request for single resource.
+    */
     public static func update(_ id: ID) -> ChildPath<Self, SingularPath, PATCH> {
         return ChildPath(path: "\(path)/\(id)")
     }
 
+    /**
+      A value for an instance of `ChildResource` which returns a `Path`
+      that encodes a `PATCH` request for that resource.
+    */
     public var update: ChildPath<Self, SingularPath, PATCH> {
       return Self.update(id)
     }
