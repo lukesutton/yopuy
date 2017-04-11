@@ -1,4 +1,14 @@
 language: objective-c
 osx_image: xcode8.3
+before_install:
+  - gem install jazzy --version 0.7.5
 script:
     - xcodebuild clean test -project Yopuy.xcodeproj -scheme Yopuy
+    - jazzy --output docs/
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: docs
+  on:
+    branch: master
