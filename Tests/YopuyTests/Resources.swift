@@ -2,7 +2,26 @@ import Foundation
 import Yopuy
 
 enum ConversionError: Error {
-case parseFailure(String)
+  case parseFailure(String)
+}
+
+struct Blog: SingularRootResource, IsRESTFul {
+    typealias Singular = Blog
+    static let path = "blog"
+
+    static func parse(singular data: Data) throws -> Singular {
+      return Blog()
+    }
+}
+
+struct Author: SingularChildResource, IsRESTFul {
+    typealias Parent = Blog
+    typealias Singular = Author
+    static let path = "author"
+
+    static func parse(singular data: Data) throws -> Singular {
+      return Author()
+    }
 }
 
 struct Post: RootResource, IsRESTFul {
@@ -11,7 +30,6 @@ struct Post: RootResource, IsRESTFul {
     typealias Singular = Post
     static let path = "posts"
     let id: Int
-
 
     static func parse(collection data: Data) throws -> Collection {
       let json = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]

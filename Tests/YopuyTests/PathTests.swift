@@ -66,10 +66,11 @@ class PathTests: XCTestCase {
     let path = Post.show(2) / Comment.replace(19)
     XCTAssert((path as Any) is Path<Comment, SingularPath, PUT>)
     XCTAssertEqual(path.path, "posts/2/comments/19")
+  }
 
   func testNestedDeletePath() {
     let path = Post.show(2) / Comment.delete(19)
     XCTAssert((path as Any) is Path<Comment, SingularPath, DELETE>)
     XCTAssertEqual(path.path, "posts/2/comments/19")
-  }}
+  }
 }

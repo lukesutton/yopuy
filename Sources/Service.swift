@@ -25,7 +25,7 @@ public struct Service<Adapter: HTTPAdapter>  {
   /**
     Makes a `GET` request to an endpoint which returns a collection.
   */
-  public func call<R: Resource>(_ path: Path<R, CollectionPath, GET>, query: [String: Any]? = nil, handler: @escaping Handler<R.Collection>) {
+  public func call<R: IdentifiableResource>(_ path: Path<R, CollectionPath, GET>, query: [String: Any]? = nil, handler: @escaping Handler<R.Collection>) {
     adapter.get(url: url(path), query: query) { result in
       handler(self.parse(result: result, with: R.parse(collection:)))
     }
