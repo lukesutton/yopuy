@@ -1,4 +1,6 @@
-# Yopuy
+![](https://cdn.rawgit.com/lukesutton/yopuy/master/logo.svg)
+
+# Yopuy - Type-safe glue for REST APIs
 
 [![Build Status](https://travis-ci.org/lukesutton/yopuy.svg?branch=master)](https://travis-ci.org/lukesutton/yopuy)
 
