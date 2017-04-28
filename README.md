@@ -6,11 +6,54 @@
 
 An experiment with a simple wrapper for accessing JSON/REST web APIs. Inspired by [an episode](https://talk.objc.io/episodes/S01E01-networking) of Swift Talk.
 
-This library differs in that it allows for nesting of resources — in a type safe manner — with some nice operators to aid in the composition of resources.
+The main aims for this library are:
 
-Since this is a sketch, there are no tests, no documentation and no introduction. Soz.
+- Type-safety where appropriate
+- Encoding/decoding agnostic
+- HTTP client agnostic
 
-## An Example
+Here is an example of it in use.
+
+```swift
+let service = Service(adapter: YourFancyAdapter(), URL: url)
+let comment = Post.show(1) / Comment.show(12)
+
+service.call(comment) { result in
+  print(result)
+}
+```
+
+## Resources
+
+Yopuy handles the interaction with an API via types which conform to the `Resource` protocol. The `Resource` protocol, various `associatedtype` declarations and other related protocols — e.g. `ChildResource`, `RootResource` — are used to grant capabilities to these types. Generally these are static functions and properties which return values representing full or partial paths to a resource.
+
+For example, a `RootResource` is one that has a path that exists at the root of an API. This adds a number of constraints.
+
+- It cannot belong to a parent resource
+- Any path it generates will be at the root of the API
+
+A corresponding protocol is `ChildResource`. It has an `associatedtype Parent` requirement. This associates a child resource with it's parent. It then guides the type-safe construction of paths e.g. `Post.show(1) / Comment.show(12)`
+
+## Fine-Grained Capabilities
+
+By default a `Resource` lacks any of the path static functions or properties. These are provided by conforming to protocols. Most of the protocols correspond to a HTTP method.
+
+- `IsListable`; can be retrieved as a collection e.g. `GET /posts`
+- `IsShowable`; can be retrieved as a single record e.g. `GET /posts/1`
+- `IsCreatable`; new resources can be created e.g. `POST /posts`
+- `IsReplaceable`; a resource can be updated via `PUT` e.g. `PUT /posts/1`
+- `IsPatchable`; a resource can be updated via `PATCH` e.g. `PATCH /posts/1`
+- `IsDeletable`; a resource can be deleted via `DELETE` e.g. `DELETE /posts/1`
+
+Here is an example of a record that can be updated, but not created or deleted.
+
+```swift
+struct Foo: RootResource, IsPatchable, IsShowable {
+  // Details elided...
+}
+```
+
+## A Longer Example
 
 This is a simple example of how we can encode a type-safe hierarchy of resources. They don't have any properties defined, since they are only demonstrating how parent and child resources are related. The `IsRESTFul` protocol is used to extend the structs with all the HTTP verbs used in a REST API. Also note how the `Commenter` struct is extended by a subset of the protocols available.
 
@@ -81,15 +124,3 @@ There are a few interesting things about the example above:
 - `IsRESTful` is just a shortcut for including all the `Is*` protocols on a resource
 - Declaring a resource without the `IsRESTful` or `Is*` protocols means they're useless, all methods come from optional protocols
 - Using typealias means the results of your requests can be arbitrary types e.g. `CustomCollection<Post>`
-
-## Making a request
-
-The request component of Yopuy is designed so that it is un-opinionated about the HTTP library you use. The only requirement is that your HTTP client conforms to the `HTTPAdapter` protocol i.e. it supports `GET`, `POST`, `PUT`, `PATCH` and `DELETE` requests.
-
-```swift
-let service = Service(adapter: YourFancyAdapter())
-let comment = Post.show(1) / Comment.show(12)
-service.call(comment) { result in
-  print(result)
-}
-```
