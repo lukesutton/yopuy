@@ -53,6 +53,28 @@ struct Foo: RootResource, IsPatchable, IsShowable {
 }
 ```
 
+## HTTP Client Agnostic
+
+All requests in Yopuy are handled by an instance of the `Service`. It is HTTP client agnostic by delegating all requests to an adapter, which is defined via the `HTTPAdapter` protocol. Here is it's full definition.
+
+```swift
+public protocol HTTPAdapter {
+    func perform(_ method: HTTPMethod, request: AdapterRequest, callback: @escaping (AdapterResponse) -> Void)
+}
+```
+
+Only one function is required and it's signature is pretty simple at that. The adapter is free to do what ever it needs in the implementation; the only hard-requirement is that it calls the `callback` function.
+
+Aside from allowing support of arbitrary HTTP clients, this approach makes testing trivial. It's easy to define a test adapter that returns the required responses.
+
+## Bring Your Own Serialisation
+
+Yopuy uses a similar approach to integrating the serialisation library of your choice. Depending on how you define your resources, you will need to conform to one or both of the parsing functions; `parse(collection:)` and `parse(singular:)`. Yopuy will choose the parsing function based on the type of request.
+
+For example, if you conform your resource to the `IsShowable` protocol, it must implement `parse(singular:)`. Another example is the `IsListable` protocol. This requires the `parse(collection:)` function.
+
+Within those functions, you are free to implement your parsing however you choose.
+
 ## A Longer Example
 
 This is a simple example of how we can encode a type-safe hierarchy of resources. They don't have any properties defined, since they are only demonstrating how parent and child resources are related. The `IsRESTFul` protocol is used to extend the structs with all the HTTP verbs used in a REST API. Also note how the `Commenter` struct is extended by a subset of the protocols available.
