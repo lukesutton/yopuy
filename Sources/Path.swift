@@ -64,6 +64,7 @@ public struct Path<R: Resource, Path, Method> {
     */
     public let path: String
 }
+
 /**
   This struct encodes the _partial_ path to an operation on a remote resource or
   a collection. It has the same semantics as `Path` — encoding method etc. — but

@@ -11,46 +11,30 @@ struct Adapter: HTTPAdapter {
 
   let response: Response
 
-  func get(url: URL, query: [String: Any]?, callback: @escaping (HTTPAdapterResult) -> Void) {
+  func perform(_ method: HTTPMethod, request: AdapterRequest, callback: @escaping (AdapterResponse) -> Void) {
     callback(encode(response))
   }
 
-  func post(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
-    callback(encode(response))
-  }
-
-  func put(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
-    callback(encode(response))
-  }
-
-  func patch(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
-    callback(encode(response))
-  }
-
-  func delete(url: URL, callback: @escaping (HTTPAdapterResult) -> Void) {
-    callback(encode(response))
-  }
-
-  private func encode(_ response: Response) -> HTTPAdapterResult {
+  private func encode(_ response: Response) -> AdapterResponse {
     switch response {
     case let .collection(data):
       return encodeJSON(data)
     case let .singular(data):
       return encodeJSON(data)
     case let .error(error):
-      return .error(error)
+      return .error(result: error, headers: [:])
     case .empty:
-      return .empty
+      return .empty(headers: [:])
     }
   }
 
-  private func encodeJSON(_ object: Any) -> HTTPAdapterResult {
+  private func encodeJSON(_ object: Any) -> AdapterResponse {
     do {
       let data = try JSONSerialization.data(withJSONObject: object)
-      return .data(data)
+      return .success(result: data, headers: [:])
     }
     catch let error {
-      return .error(error)
+      return .error(result: error, headers: [:])
     }
   }
 }

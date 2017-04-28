@@ -5,8 +5,6 @@ import Foundation
   requests to the underlying adapter.
 */
 public struct Service<Adapter: HTTPAdapter>  {
-  public typealias Handler<R> = (HTTPResult<R>) -> Void
-
   private let adapter: Adapter
 
   /**
@@ -15,86 +13,127 @@ public struct Service<Adapter: HTTPAdapter>  {
   public let host: URL
 
   /**
+    The default configuration that will be applied to every request.
+  */
+  public let options: Options
+
+  /**
     Create a new instance of a service using an adapter and a root URL.
   */
-  public init(adapter: Adapter, host: URL) {
+  public init(adapter: Adapter, host: URL, options: Options = Options()) {
     self.adapter = adapter
     self.host = host
+    self.options = options
   }
+
+  /**
+    The handler function for service calls which return single resources.
+  */
+  public typealias SingularHandler<R: Resource, M> = (Response<R, SingularPath, M, R.Singular>) -> Void
+
+  /**
+    The handler function for service calls which return a collection of
+    resources.
+  */
+  public typealias CollectionHandler<R: IdentifiableResource, M> = (Response<R, CollectionPath, M, R.Collection>) -> Void
 
   /**
     Makes a `GET` request to an endpoint which returns a collection.
   */
-  public func call<R: IdentifiableResource>(_ path: Path<R, CollectionPath, GET>, query: [String: Any]? = nil, handler: @escaping Handler<R.Collection>) {
-    adapter.get(url: url(path), query: query) { result in
-      handler(self.parse(result: result, with: R.parse(collection:)))
-    }
+  public func call<R: IdentifiableResource>(_ path: Path<R, CollectionPath, GET>, options: Options = Options(), handler: @escaping CollectionHandler<R, GET>) {
+    perform(.GET, path, options: options, handler: handler, parser: R.parse(collection:))
   }
 
   /**
     Makes a `POST` request to an endpoint which returns a resource.
   */
-  public func call<R: Resource>(_ path: Path<R, SingularPath, POST>, body: [String: Any], handler: @escaping Handler<R.Singular>) {
-    adapter.post(url: url(path), body: body) { result in
-      handler(self.parse(result: result, with: R.parse(singular:)))
-    }
+  public func call<R: Resource>(_ path: Path<R, SingularPath, POST>, options: Options = Options(), handler: @escaping SingularHandler<R, POST>) {
+    perform(.POST, path, options: options, handler: handler, parser: R.parse(singular:))
   }
 
   /**
     Makes a `GET` request to an endpoint which returns a resource.
   */
-  public func call<R: Resource>(_ path: Path<R, SingularPath, GET>, query: [String: Any]? = nil, handler: @escaping Handler<R.Singular>) {
-    adapter.get(url: url(path), query: query) { result in
-      handler(self.parse(result: result, with: R.parse(singular:)))
-    }
+  public func call<R: Resource>(_ path: Path<R, SingularPath, GET>, options: Options = Options(), handler: @escaping SingularHandler<R, GET>) {
+    perform(.GET, path, options: options, handler: handler, parser: R.parse(singular:))
   }
 
   /**
     Makes a `PUT` request to an endpoint which returns a resource.
   */
-  public func call<R: Resource>(_ path: Path<R, SingularPath, PUT>, body: [String: Any], handler: @escaping Handler<R.Singular>) {
-    adapter.put(url: url(path), body: body) { result in
-      handler(self.parse(result: result, with: R.parse(singular:)))
-    }
+  public func call<R: Resource>(_ path: Path<R, SingularPath, PUT>, options: Options = Options(), handler: @escaping SingularHandler<R, PUT>) {
+    perform(.PUT, path, options: options, handler: handler, parser: R.parse(singular:))
   }
 
   /**
     Makes a `PATCH` request to an endpoint which returns a resource.
   */
-  public func call<R: Resource>(_ path: Path<R, SingularPath, PATCH>, body: [String: Any], handler: @escaping Handler<R.Singular>) {
-    adapter.patch(url: url(path), body: body) { result in
-      handler(self.parse(result: result, with: R.parse(singular:)))
-    }
+  public func call<R: Resource>(_ path: Path<R, SingularPath, PATCH>, options: Options = Options(), handler: @escaping SingularHandler<R, PATCH>) {
+    perform(.PATCH, path, options: options, handler: handler, parser: R.parse(singular:))
   }
 
   /**
-    Makes a `DELETE` request to an endpoint which — optionally — returns a
-    resource.
+    Makes a `DELETE` request to an endpoint which returns a resource.
   */
-  public func call<R: Resource>(_ path: Path<R, SingularPath, DELETE>, handler: @escaping Handler<R.Singular>) {
-    adapter.delete(url: url(path)) { result in
-      handler(self.parse(result: result, with: R.parse(singular:)))
+  public func call<R: Resource>(_ path: Path<R, SingularPath, DELETE>, options: Options = Options(), handler: @escaping SingularHandler<R, DELETE>) {
+    perform(.DELETE, path, options: options, handler: handler, parser: R.parse(singular:))
+  }
+
+  /**
+    Performs the actual request. Generates a `Request` object and handles the
+    response from the underlying adapter, mapping it to the `Response` which is
+    sent to the handler.
+  */
+  private func perform<R: Resource, P, M, Result>(
+    _ method: HTTPMethod,
+    _ path: Path<R, P, M>,
+    options: Options,
+    handler: @escaping (Response<R, P, M, Result>) -> Void,
+    parser: @escaping (Data) throws -> Result) {
+    // TODO: Catch errors with the URL generation
+    let request = Request<R, P, M>(
+      path: path,
+      URL: URL(string: path.path, relativeTo: host)!,
+      headers: merge(self.options.headers, options.headers, with: mergeHeaders),
+      query: merge(self.options.query, options.query, with: mergeQueries),
+      body: options.body
+    )
+
+    adapter.perform(method, request: request) { raw in
+      switch raw {
+      case let .error(error, _):
+        handler(Response<R, P, M, Result>.error(path: path, result: error, headers: []))
+      case .empty:
+        handler(Response<R, P, M, Result>.empty(path: path, headers: []))
+      case let .success(result, _):
+        do {
+          let result = try parser(result)
+          handler(Response<R, P, M, Result>.success(path: path, result: result, headers: []))
+        }
+        catch let error {
+          handler(Response<R, P, M, Result>.error(path: path, result: error, headers: []))
+        }
+      }
     }
   }
 
-  private func url<R, P, M>(_ path: Path<R, P, M>) -> URL {
-    return URL(string: path.path, relativeTo: host)!
+  private func merge<A>(_ a: A?, _ b: A?, with op: (A, A) -> A) -> A? {
+    guard let a = a else { return b }
+    guard let b = b else { return a }
+    return op(a, b)
   }
 
-  private func parse<T>(result: HTTPResult<Data>, with parser: (Data) throws -> T) -> HTTPResult<T> {
-    switch result {
-    case .empty:
-      return .empty
-    case let .error(error):
-      return .error(error)
-    case let .data(data):
-      do {
-        let result = try parser(data)
-        return .data(result)
-      }
-      catch let error {
-        return .error(error)
-      }
+  private func mergeHeaders(_ a: [Header], _ b: [Header]) -> [Header] {
+    let keys = b.map { $0.pair.0 }
+    let filtered = a.filter { !keys.contains($0.pair.0) }
+    return filtered + b
+  }
+
+  private func mergeQueries(_ a: [String: String], _ b: [String: String]) -> [String: String] {
+    var result = a
+    for (k, v) in b {
+        result.updateValue(v, forKey: k)
     }
+    return result
   }
 }

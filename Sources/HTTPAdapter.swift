@@ -19,36 +19,8 @@ import Foundation
 */
 public protocol HTTPAdapter {
     /**
-      The response given to the callback in each of the request functions.
+      Issue a HTTP request, where the HTTP method is specified via the `HTTPMethod`
+      enum e.g. `.GET`.
     */
-    typealias HTTPAdapterResult = HTTPResult<Data>
-
-    /**
-      Generate a GET request. The query should be translated to a query-string
-      and appended to the URL.
-    */
-    func get(url: URL, query: [String: Any]?, callback: @escaping (HTTPAdapterResult) -> Void)
-
-    /**
-      Generate a POST request. The body should be converted and added to the
-      request body.
-    */
-    func post(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void)
-
-    /**
-      Generate a PUT request. The body should be converted and added to the
-      request body.
-    */
-    func put(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void)
-
-    /**
-      Generate a POST request. The body should be converted and added to the
-      request body.
-    */
-    func patch(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void)
-
-    /**
-      Generate a DELETE request.
-    */
-    func delete(url: URL, callback: @escaping (HTTPAdapterResult) -> Void)
+    func perform(_ method: HTTPMethod, request: AdapterRequest, callback: @escaping (AdapterResponse) -> Void)
 }

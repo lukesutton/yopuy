@@ -13,7 +13,7 @@ class ServiceTests: XCTestCase {
     let service = Service(adapter: Adapter(response: .collection(payload)), host: host)
     service.call(Post.list) { result in
       switch result {
-      case let .data(data):
+      case let .success(_, data, _):
         XCTAssertEqual(data, [Post(id: 1), Post(id: 2)])
       default:
         XCTFail()
@@ -31,7 +31,7 @@ class ServiceTests: XCTestCase {
     let service = Service(adapter: Adapter(response: .singular(payload)), host: host)
     service.call(Post.show(2)) { result in
       switch result {
-      case let .data(data):
+      case let .success(_, data, _):
         XCTAssertEqual(data, Post(id: 2))
       default:
         XCTFail()
@@ -47,9 +47,9 @@ class ServiceTests: XCTestCase {
     let expect = expectation(description: "Testing create")
     let payload = ["id": 2]
     let service = Service(adapter: Adapter(response: .singular(payload)), host: host)
-    service.call(Post.create, body: payload) { result in
+    service.call(Post.create, options: Options(body: "what")) { result in
       switch result {
-      case let .data(data):
+      case let .success(_, data, _):
         XCTAssertEqual(data, Post(id: 2))
       default:
         XCTFail()
@@ -65,9 +65,9 @@ class ServiceTests: XCTestCase {
     let expect = expectation(description: "Testing replace")
     let payload = ["id": 2]
     let service = Service(adapter: Adapter(response: .singular(payload)), host: host)
-    service.call(Post.replace(2), body: payload) { result in
+    service.call(Post.replace(2), options: Options(body: "what")) { result in
       switch result {
-      case let .data(data):
+      case let .success(_, data, _):
         XCTAssertEqual(data, Post(id: 2))
       default:
         XCTFail()
@@ -83,9 +83,9 @@ class ServiceTests: XCTestCase {
     let expect = expectation(description: "Testing update")
     let payload = ["id": 2]
     let service = Service(adapter: Adapter(response: .singular(payload)), host: host)
-    service.call(Post.update(2), body: payload) { result in
+    service.call(Post.update(2), options: Options(body: "what")) { result in
       switch result {
-      case let .data(data):
+      case let .success(_, data, _):
         XCTAssertEqual(data, Post(id: 2))
       default:
         XCTFail()
