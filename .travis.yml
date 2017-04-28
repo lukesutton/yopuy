@@ -4,7 +4,7 @@ before_install:
   - gem install jazzy --version 0.7.5
 script:
     - xcodebuild clean test -project Yopuy.xcodeproj -scheme Yopuy
-    - jazzy 
+    - jazzy
 deploy:
   provider: pages
   skip_cleanup: true
