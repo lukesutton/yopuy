@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IsDeletable Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Protocol/IsDeletable" class="dashAnchor"></a>
+
+    <a title="IsDeletable Protocol Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Yopuy Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/lukesutton/yopuy">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Flukesutton%2Egithub%2Eio%2Fdocsets%2FYopuy%2Exml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Yopuy Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      IsDeletable Protocol Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AdapterResponse.html">AdapterResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy14CollectionPath">CollectionPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy3GET">GET</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HTTPResult.html">HTTPResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Header.html">Header</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy5PATCH">PATCH</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy4POST">POST</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy3PUT">PUT</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions//(_:_:).html">/(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AdapterRequest.html">AdapterRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/HTTPAdapter.html">HTTPAdapter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IdentifiableResource.html">IdentifiableResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsCreatable.html">IsCreatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsDeletable.html">IsDeletable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsListable.html">IsListable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsPatchable.html">IsPatchable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy9IsRESTFul">IsRESTFul</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsReplaceable.html">IsReplaceable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsShowable.html">IsShowable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Resource.html">Resource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy12RootResource">RootResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ChildPath.html">ChildPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Options.html">Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Path.html">Path</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Service.html">Service</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>IsDeletable</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsDeletable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Resource.html">Resource</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Flags a resource as being deletable. This protocol does nothing by itself, but
+has constrained extensions for types implementing <code><a href="../Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> and
+<code><a href="../Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFe5YopuyRxS_11IsDeletablexS_12RootResourcerS0_6deleteFwxPS_20IdentifiableResource2IDGVS_4PathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Method/delete(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFe5YopuyRxS_11IsDeletablexS_12RootResourcerS0_6deleteFwxPS_20IdentifiableResource2IDGVS_4PathxOS_12SingularPathOS_6DELETE_">delete(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A static function for <code><a href="../Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code> that encodes
+a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for single resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">_</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ve5YopuyRxS_11IsDeletablexS_12RootResourcerS0_6deleteGVS_4PathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Property/delete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ve5YopuyRxS_11IsDeletablexS_12RootResourcerS0_6deleteGVS_4PathxOS_12SingularPathOS_6DELETE_">delete</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A value for an instance of <code><a href="../Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code>
+that encodes a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for that resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delete</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFe5YopuyRxS_13ChildResourcexS_11IsDeletablerS1_6deleteFwxPS_20IdentifiableResource2IDGVS_9ChildPathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Method/delete(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFe5YopuyRxS_13ChildResourcexS_11IsDeletablerS1_6deleteFwxPS_20IdentifiableResource2IDGVS_9ChildPathxOS_12SingularPathOS_6DELETE_">delete(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A static function for <code><a href="../Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code> that encodes
+a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for single resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">_</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/ChildPath.html">ChildPath</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ve5YopuyRxS_13ChildResourcexS_11IsDeletablerS1_6deleteGVS_9ChildPathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Property/delete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ve5YopuyRxS_13ChildResourcexS_11IsDeletablerS1_6deleteGVS_9ChildPathxOS_12SingularPathOS_6DELETE_">delete</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A value for an instance of <code><a href="../Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code>
+that encodes a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for that resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delete</span><span class="p">:</span> <span class="kt"><a href="../Structs/ChildPath.html">ChildPath</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Zve5YopuyRxS_11IsDeletablexS_20SingularRootResourcerS0_6deleteGVS_4PathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Variable/delete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Zve5YopuyRxS_11IsDeletablexS_20SingularRootResourcerS0_6deleteGVS_4PathxOS_12SingularPathOS_6DELETE_">delete</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A static function for <code><a href="../Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code> that
+encodes a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for single resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">delete</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ve5YopuyRxS_11IsDeletablexS_20SingularRootResourcerS0_6deleteGVS_4PathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Property/delete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ve5YopuyRxS_11IsDeletablexS_20SingularRootResourcerS0_6deleteGVS_4PathxOS_12SingularPathOS_6DELETE_">delete</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A value for an instance of <code><a href="../Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code>
+that encodes a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for that resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delete</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Zve5YopuyRxS_11IsDeletablexS_21SingularChildResourcerS0_6deleteGVS_9ChildPathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Variable/delete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Zve5YopuyRxS_11IsDeletablexS_21SingularChildResourcerS0_6deleteGVS_9ChildPathxOS_12SingularPathOS_6DELETE_">delete</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A static function for <code><a href="../Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code> that
+encodes a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for single resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">delete</span><span class="p">:</span> <span class="kt"><a href="../Structs/ChildPath.html">ChildPath</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ve5YopuyRxS_11IsDeletablexS_21SingularChildResourcerS0_6deleteGVS_9ChildPathxOS_12SingularPathOS_6DELETE_"></a>
+                    <a name="//apple_ref/swift/Property/delete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ve5YopuyRxS_11IsDeletablexS_21SingularChildResourcerS0_6deleteGVS_9ChildPathxOS_12SingularPathOS_6DELETE_">delete</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A value for an instance of <code><a href="../Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a></code> which returns a <code><a href="../Structs/Path.html">Path</a></code>
+that encodes a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request for that resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delete</span><span class="p">:</span> <span class="kt"><a href="../Structs/ChildPath.html">ChildPath</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="https://github.com/lukesutton" target="_blank" rel="external">Luke Sutton</a>. All rights reserved. (Last updated: 2017-05-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

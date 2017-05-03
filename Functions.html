@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Functions  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Functions  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Yopuy Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/lukesutton/yopuy">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Flukesutton%2Egithub%2Eio%2Fdocsets%2FYopuy%2Exml">
+            <img class="header-icon" src="img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Yopuy Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Functions  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/AdapterResponse.html">AdapterResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy14CollectionPath">CollectionPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy6DELETE">DELETE</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy3GET">GET</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HTTPResult.html">HTTPResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Header.html">Header</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy5PATCH">PATCH</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy4POST">POST</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy3PUT">PUT</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions//(_:_:).html">/(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/AdapterRequest.html">AdapterRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/HTTPAdapter.html">HTTPAdapter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IdentifiableResource.html">IdentifiableResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsCreatable.html">IsCreatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsDeletable.html">IsDeletable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsListable.html">IsListable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsPatchable.html">IsPatchable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy9IsRESTFul">IsRESTFul</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsReplaceable.html">IsReplaceable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsShowable.html">IsShowable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Resource.html">Resource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ChildPath.html">ChildPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Options.html">Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Path.html">Path</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Service.html">Service</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Functions</h1>
+            <p>The following functions are available globally.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F5Yopuyoi1du2_RxS_10IsShowable_S_14NestedResourcew_6ParentzxrFTGVS_4PathxOS_12SingularPathOS_3GET_GVS_9ChildPathq_q0_q1___GS3_q_q0_q1__"></a>
+                    <a name="//apple_ref/swift/Function//(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F5Yopuyoi1du2_RxS_10IsShowable_S_14NestedResourcew_6ParentzxrFTGVS_4PathxOS_12SingularPathOS_3GET_GVS_9ChildPathq_q0_q1___GS3_q_q0_q1__">/(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Appends a <code><a href="Structs/ChildPath.html">ChildPath</a></code> to a <code><a href="Structs/Path.html">Path</a></code> yielding a new <code><a href="Structs/Path.html">Path</a></code>. This is the mechanism
+used for generating paths to resources and collections.</p>
+
+<p>Here is a version with manually constructed paths:</p>
+
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">parent</span> <span class="o">=</span> <span class="kt">Path</span><span class="o">&lt;</span><span class="kt">Group</span><span class="p">,</span> <span class="kt">SingularPath</span><span class="p">,</span> <span class="kt">GET</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="s">"groups/1"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">child</span> <span class="o">=</span> <span class="kt">ChildPath</span><span class="o">&lt;</span><span class="kt">User</span><span class="p">,</span> <span class="kt">SingularPath</span><span class="p">,</span> <span class="kt">GET</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="s">"users/1"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="n">parent</span> <span class="o">/</span> <span class="n">child</span>
+<span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">path</span> <span class="c1">// "groups/1/users/1"</span>
+</code></pre>
+
+<p>Generally you wouldn&rsquo;t do this however. You would use the functions defined
+on your resources.</p>
+
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="kt">Group</span><span class="o">.</span><span class="nf">show</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="kt">User</span><span class="o">.</span><span class="nf">show</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">path</span> <span class="c1">// "groups/1/users/1"</span>
+</code></pre>
+
+<p>The various constraints on this function give us the following properties:</p>
+
+<ul>
+<li>Only <code><a href="Structs/ChildPath.html">ChildPath</a></code> can be appended to <code><a href="Structs/Path.html">Path</a></code>, not <code><a href="Structs/Path.html">Path</a></code> to <code><a href="Structs/Path.html">Path</a></code> or
+<code><a href="Structs/ChildPath.html">ChildPath</a></code> to <code><a href="Structs/ChildPath.html">ChildPath</a></code></li>
+<li>The parent <code><a href="Structs/Path.html">Path</a></code> must point to a single resource, not a collection</li>
+<li>The resources for the paths must have a parent/child relationship; see the
+<code>associatedtype Parent</code> declaration in <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</li>
+</ul>
+
+                        <a href="Functions//(_:_:).html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">/</span> <span class="o">&lt;</span><span class="kt">P</span><span class="p">,</span> <span class="kt">C</span><span class="p">,</span> <span class="kt">F</span><span class="p">,</span> <span class="kt">M</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">P</span><span class="p">,</span> <span class="kt"><a href="Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="Enums.html#/s:O5Yopuy3GET">GET</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Structs/ChildPath.html">ChildPath</a></span><span class="o">&lt;</span><span class="kt">C</span><span class="p">,</span> <span class="kt">F</span><span class="p">,</span> <span class="kt">M</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">C</span><span class="p">,</span> <span class="kt">F</span><span class="p">,</span> <span class="kt">M</span><span class="o">&gt;</span>
+    <span class="k">where</span> <span class="kt">P</span><span class="p">:</span> <span class="kt"><a href="Protocols/IsShowable.html">IsShowable</a></span><span class="p">,</span> <span class="kt">C</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a></span><span class="p">,</span> <span class="kt">C</span><span class="o">.</span><span class="kt">Parent</span> <span class="o">==</span> <span class="kt">P</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="https://github.com/lukesutton" target="_blank" rel="external">Luke Sutton</a>. All rights reserved. (Last updated: 2017-05-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

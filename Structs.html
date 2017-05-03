@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Structs  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Structs  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Yopuy Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/lukesutton/yopuy">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Flukesutton%2Egithub%2Eio%2Fdocsets%2FYopuy%2Exml">
+            <img class="header-icon" src="img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Yopuy Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Structs  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/AdapterResponse.html">AdapterResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy14CollectionPath">CollectionPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy6DELETE">DELETE</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy3GET">GET</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HTTPResult.html">HTTPResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Header.html">Header</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy5PATCH">PATCH</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy4POST">POST</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy3PUT">PUT</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions//(_:_:).html">/(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/AdapterRequest.html">AdapterRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/HTTPAdapter.html">HTTPAdapter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IdentifiableResource.html">IdentifiableResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsCreatable.html">IsCreatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsDeletable.html">IsDeletable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsListable.html">IsListable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsPatchable.html">IsPatchable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy9IsRESTFul">IsRESTFul</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsReplaceable.html">IsReplaceable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsShowable.html">IsShowable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Resource.html">Resource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ChildPath.html">ChildPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Options.html">Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Path.html">Path</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Service.html">Service</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Structs</h1>
+            <p>The following structs are available globally.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V5Yopuy7Options"></a>
+                    <a name="//apple_ref/swift/Struct/Options" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V5Yopuy7Options">Options</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The options for a request. It captures headers, query-string and request body.</p>
+
+                        <a href="Structs/Options.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Options</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V5Yopuy4Path"></a>
+                    <a name="//apple_ref/swift/Struct/Path" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V5Yopuy4Path">Path</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This struct encodes the path to an operation on a remote resource or a
+collection. It uses generics and phantom-types to encode the <code><a href="Protocols/Resource.html">Resource</a></code> it
+relates to, the response type — a collection or single resource — and the
+HTTP method.</p>
+
+<p>It can then be passed to the <code>call</code> function on the <code><a href="Structs/Service.html">Service</a></code> type, which will
+execute the encoded operation.</p>
+
+<p>Here is an example of a path for deleting a record:</p>
+
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="kt">Path</span><span class="o">&lt;</span><span class="kt">User</span><span class="p">,</span> <span class="kt">SingularPath</span><span class="p">,</span> <span class="kt">DELETE</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="s">"user/1"</span><span class="p">)</span>
+</code></pre>
+
+<p><strong>Note:</strong> In general usage, you should not need to construct an instance of
+this type. Instead they are generated by functions defined on <code><a href="Protocols/Resource.html">Resource</a></code>.</p>
+
+                        <a href="Structs/Path.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Path</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span><span class="p">,</span> <span class="kt">Path</span><span class="p">,</span> <span class="kt">Method</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V5Yopuy9ChildPath"></a>
+                    <a name="//apple_ref/swift/Struct/ChildPath" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V5Yopuy9ChildPath">ChildPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This struct encodes the <em>partial</em> path to an operation on a remote resource or
+a collection. It has the same semantics as <code><a href="Structs/Path.html">Path</a></code> — encoding method etc. — but
+cannot be used to make a request. Instead it has to be appended to a <code><a href="Structs/Path.html">Path</a></code>.</p>
+
+<p>Imagine we have a hierarchy like this: <code>/groups/{group_id}/users/{user_id}</code>.
+We don&rsquo;t want to allow a path like <code>/users/1</code> to be used to make a request. So
+we encode it as a <code>ChildPath</code>. We would turn it into a qualified path using
+the <code><a href="Functions//(_:_:).html">/(_:_:)</a></code> operator.</p>
+
+<p><strong>Note:</strong> In general usage, you should not need to construct an instance of
+this type. Instead they are generated by functions defined on <code><a href="Protocols/Resource.html">Resource</a></code>.</p>
+
+                        <a href="Structs/ChildPath.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ChildPath</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a></span><span class="p">,</span> <span class="kt"><a href="Structs/Path.html">Path</a></span><span class="p">,</span> <span class="kt">Method</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V5Yopuy7Request"></a>
+                    <a name="//apple_ref/swift/Struct/Request" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V5Yopuy7Request">Request</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Encodes a request — path, URL, body etc — and is generated by the <code><a href="Structs/Service.html">Service</a></code>.
+It&rsquo;s generic types are there for the <code><a href="Structs/Path.html">Path</a></code> instance it captures.</p>
+
+                        <a href="Structs/Request.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Request</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span><span class="p">,</span> <span class="kt">P</span><span class="p">,</span> <span class="kt">M</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V5Yopuy7Service"></a>
+                    <a name="//apple_ref/swift/Struct/Service" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V5Yopuy7Service">Service</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A struct which wraps interaction with a remote API. It delegates all the HTTP
+requests to the underlying adapter.</p>
+
+                        <a href="Structs/Service.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Service</span><span class="o">&lt;</span><span class="kt">Adapter</span><span class="p">:</span> <span class="kt"><a href="Protocols/HTTPAdapter.html">HTTPAdapter</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="https://github.com/lukesutton" target="_blank" rel="external">Luke Sutton</a>. All rights reserved. (Last updated: 2017-05-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

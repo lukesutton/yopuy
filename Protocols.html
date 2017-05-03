@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Protocols  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Yopuy Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/lukesutton/yopuy">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Flukesutton%2Egithub%2Eio%2Fdocsets%2FYopuy%2Exml">
+            <img class="header-icon" src="img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Yopuy Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Protocols  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/AdapterResponse.html">AdapterResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy14CollectionPath">CollectionPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy6DELETE">DELETE</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy3GET">GET</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HTTPResult.html">HTTPResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Header.html">Header</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy5PATCH">PATCH</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy4POST">POST</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy3PUT">PUT</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions//(_:_:).html">/(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/AdapterRequest.html">AdapterRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/HTTPAdapter.html">HTTPAdapter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IdentifiableResource.html">IdentifiableResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsCreatable.html">IsCreatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsDeletable.html">IsDeletable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsListable.html">IsListable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsPatchable.html">IsPatchable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy9IsRESTFul">IsRESTFul</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsReplaceable.html">IsReplaceable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IsShowable.html">IsShowable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Resource.html">Resource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ChildPath.html">ChildPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Options.html">Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Path.html">Path</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Service.html">Service</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy14AdapterRequest"></a>
+                    <a name="//apple_ref/swift/Protocol/AdapterRequest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy14AdapterRequest">AdapterRequest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Requests that the <code><a href="Structs/Service.html">Service</a></code> sends to the <code><a href="Protocols/HTTPAdapter.html">HTTPAdapter</a></code>. This is actually just
+wraps the <code><a href="Structs/Request.html">Request</a></code> struct, erasing the <code><a href="Structs/Path.html">Path</a></code> type so the adapter doesn&rsquo;t
+have to deal with it.</p>
+
+                        <a href="Protocols/AdapterRequest.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AdapterRequest</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy11HTTPAdapter"></a>
+                    <a name="//apple_ref/swift/Protocol/HTTPAdapter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy11HTTPAdapter">HTTPAdapter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The adapter for making HTTP requests. This may be implemented as an extension
+to a HTTP client or a custom type that implements this protocol.</p>
+
+<p>It&rsquo;s entirely async, with all methods receiving a callback. The adapter
+communicates success or failure to the callback using the <code>HTTPAdapterResult</code>
+enum, which encodes success and failure.</p>
+
+<p>All the implementation details around encoding values and generating requests
+is left to the adapter and underlying client.</p>
+
+<p>For example, the here are some of the adapter&rsquo;s responsibility:</p>
+
+<ul>
+<li>Authentication</li>
+<li>Content negotiation</li>
+<li>Caching</li>
+</ul>
+
+                        <a href="Protocols/HTTPAdapter.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">HTTPAdapter</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy8Resource"></a>
+                    <a name="//apple_ref/swift/Protocol/Resource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy8Resource">Resource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines the base requirements for types that interact with Yopuy.</p>
+
+<p><strong>Note:</strong> This protocol should not be used directly, instead use the
+<code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code>, <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>, <code><a href="Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a></code> or
+<code><a href="Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a></code> protocols.</p>
+
+                        <a href="Protocols/Resource.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Resource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy20IdentifiableResource"></a>
+                    <a name="//apple_ref/swift/Protocol/IdentifiableResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy20IdentifiableResource">IdentifiableResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines a resource which is identifiable. That is, it has an <code>id</code> property and
+instances can be retrieved from the remote API by ID. This also implies that
+the resource is listable. So it includes the requirement for the
+<code>parse(collection:)</code> function.</p>
+
+<p><strong>Note:</strong> Do not use this protocol directly. You should instead conform your
+resources to <code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> or <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code></p>
+
+                        <a href="Protocols/IdentifiableResource.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IdentifiableResource</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy12RootResource"></a>
+                    <a name="//apple_ref/swift/Protocol/RootResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy12RootResource">RootResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines a resource that exists at the root of the remote API.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RootResource</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IdentifiableResource.html">IdentifiableResource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy14NestedResource"></a>
+                    <a name="//apple_ref/swift/Protocol/NestedResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy14NestedResource">NestedResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines a resource that is a child of another.</p>
+
+<p><strong>Note:</strong> This protocol should not be used directly, instead use the
+<code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code> and <code><a href="Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a></code> protocols.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NestedResource</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy13ChildResource"></a>
+                    <a name="//apple_ref/swift/Protocol/ChildResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy13ChildResource">ChildResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines a resource that is related to a parent resource, which may be a
+<code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> or another <code>ChildResource</code>. This is done via the
+<code>associatedtype Parent</code> declaration. This is used as a constraint in order to
+direct the type-safe construction of paths which are used for requests.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ChildResource</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IdentifiableResource.html">IdentifiableResource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy20SingularRootResource"></a>
+                    <a name="//apple_ref/swift/Protocol/SingularRootResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy20SingularRootResource">SingularRootResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines a resource which exists at the root of the remote API and which has
+only one instance. Rather than being addressed by an ID, it is addressed by
+a constant path.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SingularRootResource</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy21SingularChildResource"></a>
+                    <a name="//apple_ref/swift/Protocol/SingularChildResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy21SingularChildResource">SingularChildResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines a resource that is related to a parent resource, which may be a
+<code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> or another <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code> and has only one instance.
+Rather than being addressed by an ID, it is addressed by a constant path.</p>
+
+<p>The relationship to the parent is done via the <code>associatedtype Parent</code>
+declaration. This is used as a constraint in order to direct the type-safe
+construction of paths which are used for requests.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SingularChildResource</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy10IsListable"></a>
+                    <a name="//apple_ref/swift/Protocol/IsListable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy10IsListable">IsListable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flags a resource as being listable i.e. it has a collection. This protocol
+does nothing by itself, but has constrained extensions for types implementing
+<code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> and <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</p>
+
+                        <a href="Protocols/IsListable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsListable</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy10IsShowable"></a>
+                    <a name="//apple_ref/swift/Protocol/IsShowable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy10IsShowable">IsShowable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flags a resource as being showable i.e. a single resource can be requested.
+This protocol does nothing by itself, but has constrained extensions for types
+implementing <code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> and <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</p>
+
+                        <a href="Protocols/IsShowable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsShowable</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy11IsDeletable"></a>
+                    <a name="//apple_ref/swift/Protocol/IsDeletable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy11IsDeletable">IsDeletable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flags a resource as being deletable. This protocol does nothing by itself, but
+has constrained extensions for types implementing <code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> and
+<code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</p>
+
+                        <a href="Protocols/IsDeletable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsDeletable</span><span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy11IsCreatable"></a>
+                    <a name="//apple_ref/swift/Protocol/IsCreatable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy11IsCreatable">IsCreatable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flags a resource as being creatable. This protocol does nothing by itself, but
+has constrained extensions for types implementing <code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> and
+<code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</p>
+
+                        <a href="Protocols/IsCreatable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsCreatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy13IsReplaceable"></a>
+                    <a name="//apple_ref/swift/Protocol/IsReplaceable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy13IsReplaceable">IsReplaceable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flags a resource as being replacable i.e. supports <code><a href="Enums.html#/s:O5Yopuy3PUT">PUT</a></code>. This protocol does
+nothing by itself, but has constrained extensions for types implementing
+<code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> and <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</p>
+
+                        <a href="Protocols/IsReplaceable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsReplaceable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy11IsPatchable"></a>
+                    <a name="//apple_ref/swift/Protocol/IsPatchable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy11IsPatchable">IsPatchable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flags a resource as being patchable i.e. supports <code><a href="Enums.html#/s:O5Yopuy5PATCH">PATCH</a></code>. This protocol does
+nothing by itself, but has constrained extensions for types implementing
+<code><a href="Protocols.html#/s:P5Yopuy12RootResource">RootResource</a></code> and <code><a href="Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a></code>.</p>
+
+                        <a href="Protocols/IsPatchable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsPatchable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P5Yopuy9IsRESTFul"></a>
+                    <a name="//apple_ref/swift/Protocol/IsRESTFul" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P5Yopuy9IsRESTFul">IsRESTFul</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A convenience protocol which allows a resource to opt into all of the <code>Is*</code>
+protocols. It will add:</p>
+
+<ul>
+<li><code><a href="Protocols/IsListable.html">IsListable</a></code></li>
+<li><code><a href="Protocols/IsCreatable.html">IsCreatable</a></code></li>
+<li><code><a href="Protocols/IsShowable.html">IsShowable</a></code></li>
+<li><code><a href="Protocols/IsReplaceable.html">IsReplaceable</a></code></li>
+<li><code><a href="Protocols/IsPatchable.html">IsPatchable</a></code></li>
+<li><code><a href="Protocols/IsDeletable.html">IsDeletable</a></code></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IsRESTFul</span><span class="p">:</span> <span class="kt"><a href="Protocols/IsListable.html">IsListable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IsCreatable.html">IsCreatable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IsShowable.html">IsShowable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IsReplaceable.html">IsReplaceable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IsPatchable.html">IsPatchable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IsDeletable.html">IsDeletable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="https://github.com/lukesutton" target="_blank" rel="external">Luke Sutton</a>. All rights reserved. (Last updated: 2017-05-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

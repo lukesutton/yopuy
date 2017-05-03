@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Service Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/Service" class="dashAnchor"></a>
+
+    <a title="Service Struct Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Yopuy Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/lukesutton/yopuy">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Flukesutton%2Egithub%2Eio%2Fdocsets%2FYopuy%2Exml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Yopuy Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Service Struct Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AdapterResponse.html">AdapterResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy14CollectionPath">CollectionPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy3GET">GET</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HTTPResult.html">HTTPResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Header.html">Header</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy5PATCH">PATCH</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy4POST">POST</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy3PUT">PUT</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions//(_:_:).html">/(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AdapterRequest.html">AdapterRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy13ChildResource">ChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/HTTPAdapter.html">HTTPAdapter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IdentifiableResource.html">IdentifiableResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsCreatable.html">IsCreatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsDeletable.html">IsDeletable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsListable.html">IsListable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsPatchable.html">IsPatchable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy9IsRESTFul">IsRESTFul</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsReplaceable.html">IsReplaceable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IsShowable.html">IsShowable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy14NestedResource">NestedResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Resource.html">Resource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy12RootResource">RootResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy21SingularChildResource">SingularChildResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:P5Yopuy20SingularRootResource">SingularRootResource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ChildPath.html">ChildPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Options.html">Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Path.html">Path</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Service.html">Service</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Service</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Service</span><span class="o">&lt;</span><span class="kt">Adapter</span><span class="p">:</span> <span class="kt"><a href="../Protocols/HTTPAdapter.html">HTTPAdapter</a></span><span class="o">&gt;</span></code></pre>
+
+                </div>
+              </div>
+            <p>A struct which wraps interaction with a remote API. It delegates all the HTTP
+requests to the underlying adapter.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V5Yopuy7Service17CollectionHandler"></a>
+                    <a name="//apple_ref/swift/Alias/CollectionHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V5Yopuy7Service17CollectionHandler">CollectionHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The handler function for service calls which return a collection of
+resources.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CollectionHandler</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IdentifiableResource.html">IdentifiableResource</a></span><span class="p">,</span> <span class="kt">M</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Enums/Response.html">Response</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy14CollectionPath">CollectionPath</a></span><span class="p">,</span> <span class="kt">M</span><span class="p">,</span> <span class="kt">R</span><span class="o">.</span><span class="kt">Collection</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V5Yopuy7Service15SingularHandler"></a>
+                    <a name="//apple_ref/swift/Alias/SingularHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V5Yopuy7Service15SingularHandler">SingularHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The handler function for service calls which return single resources.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">SingularHandler</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Resource.html">Resource</a></span><span class="p">,</span> <span class="kt">M</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Enums/Response.html">Response</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt">M</span><span class="p">,</span> <span class="kt">R</span><span class="o">.</span><span class="kt">Singular</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV5Yopuy7Service4hostV10Foundation3URL"></a>
+                    <a name="//apple_ref/swift/Property/host" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV5Yopuy7Service4hostV10Foundation3URL">host</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The root URL for the remote API. All requests will be made relative to this.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV5Yopuy7Service7optionsVS_7Options"></a>
+                    <a name="//apple_ref/swift/Property/options" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV5Yopuy7Service7optionsVS_7Options">options</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default configuration that will be applied to every request.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Yopuy7ServicecFT7adapterx4hostV10Foundation3URL7optionsVS_7Options_GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(adapter:host:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Yopuy7ServicecFT7adapterx4hostV10Foundation3URL7optionsVS_7Options_GS0_x_">init(adapter:host:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new instance of a service using an adapter and a root URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">adapter</span><span class="p">:</span> <span class="kt">Adapter</span><span class="p">,</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Yopuy7Service4calluRd__S_20IdentifiableResourcerFTGVS_4Pathqd__OS_14CollectionPathOS_3GET_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__10Collection_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/call(_:options:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Yopuy7Service4calluRd__S_20IdentifiableResourcerFTGVS_4Pathqd__OS_14CollectionPathOS_3GET_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__10Collection_T__T_">call(_:options:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Makes a <code><a href="../Enums.html#/s:O5Yopuy3GET">GET</a></code> request to an endpoint which returns a collection.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">call</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IdentifiableResource.html">IdentifiableResource</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy14CollectionPath">CollectionPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy3GET">GET</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">(),</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Structs/Service.html#/s:V5Yopuy7Service17CollectionHandler">CollectionHandler</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy3GET">GET</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_4POST_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/call(_:options:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_4POST_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_">call(_:options:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Makes a <code><a href="../Enums.html#/s:O5Yopuy4POST">POST</a></code> request to an endpoint which returns a resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">call</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Resource.html">Resource</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy4POST">POST</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">(),</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Structs/Service.html#/s:V5Yopuy7Service15SingularHandler">SingularHandler</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy4POST">POST</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_3GET_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/call(_:options:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_3GET_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_">call(_:options:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Makes a <code><a href="../Enums.html#/s:O5Yopuy3GET">GET</a></code> request to an endpoint which returns a resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">call</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Resource.html">Resource</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy3GET">GET</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">(),</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Structs/Service.html#/s:V5Yopuy7Service15SingularHandler">SingularHandler</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy3GET">GET</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_3PUT_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/call(_:options:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_3PUT_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_">call(_:options:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Makes a <code><a href="../Enums.html#/s:O5Yopuy3PUT">PUT</a></code> request to an endpoint which returns a resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">call</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Resource.html">Resource</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy3PUT">PUT</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">(),</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Structs/Service.html#/s:V5Yopuy7Service15SingularHandler">SingularHandler</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy3PUT">PUT</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_5PATCH_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/call(_:options:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_5PATCH_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_">call(_:options:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Makes a <code><a href="../Enums.html#/s:O5Yopuy5PATCH">PATCH</a></code> request to an endpoint which returns a resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">call</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Resource.html">Resource</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy5PATCH">PATCH</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">(),</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Structs/Service.html#/s:V5Yopuy7Service15SingularHandler">SingularHandler</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy5PATCH">PATCH</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_6DELETE_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/call(_:options:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Yopuy7Service4calluRd__S_8ResourcerFTGVS_4Pathqd__OS_12SingularPathOS_6DELETE_7optionsVS_7Options7handlerFGOS_8Responseqd__S3_S4_wd__8Singular_T__T_">call(_:options:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Makes a <code><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></code> request to an endpoint which returns a resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">call</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Resource.html">Resource</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt"><a href="../Structs/Path.html">Path</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy12SingularPath">SingularPath</a></span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">(),</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Structs/Service.html#/s:V5Yopuy7Service15SingularHandler">SingularHandler</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="p">,</span> <span class="kt"><a href="../Enums.html#/s:O5Yopuy6DELETE">DELETE</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="https://github.com/lukesutton" target="_blank" rel="external">Luke Sutton</a>. All rights reserved. (Last updated: 2017-05-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
