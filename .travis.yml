@@ -5,6 +5,8 @@ before_install:
 script:
     - xcodebuild clean test -project Yopuy.xcodeproj -scheme Yopuy
     - jazzy
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: pages
   skip_cleanup: true
