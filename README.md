@@ -3,6 +3,7 @@
 # Yopuy - Type-safe glue for REST APIs
 
 [![Build Status](https://travis-ci.org/lukesutton/yopuy.svg?branch=master)](https://travis-ci.org/lukesutton/yopuy)
+[![codecov](https://codecov.io/gh/lukesutton/yopuy/branch/master/graph/badge.svg)](https://codecov.io/gh/lukesutton/yopuy)
 
 An experiment with a simple wrapper for accessing JSON/REST web APIs. Inspired by [an episode](https://talk.objc.io/episodes/S01E01-networking) of Swift Talk.
 
